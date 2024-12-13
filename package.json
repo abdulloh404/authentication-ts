@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve": "nodemon",
-    "dev": "nodemon",
+    "dev": "nodemon --watch src --exec ts-node src/index.ts",
     "serve:ssr:AuthApi": "node dist/auth-api/server/server.mjs"
   },
   "private": true,

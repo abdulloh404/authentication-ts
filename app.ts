@@ -1,5 +1,5 @@
 import bodyParser from 'body-parser';
-import csrf from 'csurf';
+// import csrf from 'csurf';
 import express from 'express';
 import helmet from 'helmet';
 import routes from './src/routes';
@@ -15,6 +15,6 @@ app.use(corsConfig);
 app.use(morganConfig);
 app.use(bodyParser.json());
 app.use(apiLimiter, routes);
-app.use(csrf({ cookie: true }));
+// app.use(csrf({ cookie: true }));
 
 export default app;
