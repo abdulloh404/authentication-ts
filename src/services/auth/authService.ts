@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+
 import { User } from '../../models/userModel';
 import { config } from '../../environments/environment';
 import { sendResetPasswordEmail, sendVerificationEmail } from '../../utils/email';

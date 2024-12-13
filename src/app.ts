@@ -2,10 +2,10 @@ import bodyParser from 'body-parser';
 // import csrf from 'csurf';
 import express from 'express';
 import helmet from 'helmet';
-import routes from './src/routes';
-import { apiLimiter } from './src/config/rate-limit.config';
-import { corsConfig } from './src/config/cors.config';
-import { morganConfig } from './src/config/morgan.config';
+import routes from './routes';
+import { apiLimiter } from './config/rate-limit.config';
+import { corsConfig } from './config/cors.config';
+import { morganConfig } from './config/morgan.config';
 
 const app = express();
 
