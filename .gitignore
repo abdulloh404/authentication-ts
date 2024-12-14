@@ -3,4 +3,5 @@ dist/
 temp/
 **/**/*.log
 config.js
-*/.DS_Store
+.DS_Store
+**/.DS_Store
