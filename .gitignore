@@ -3,6 +3,4 @@ dist/
 temp/
 **/**/*.log
 config.js
-
-# .env
 .DS_Store

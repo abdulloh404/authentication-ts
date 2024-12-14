@@ -1,20 +1,12 @@
-import app from './app';
-import { sequelize } from './config/database.config';
-import dotenv from 'dotenv';
+import logger from 'jet-logger';
 
-dotenv.config();
+import Env from '@src/common/Env';
+import server from './server';
 
-const PORT = process.env.PORT || 4000;
 
-(async () => {
-  try {
-    await sequelize.authenticate();
-    console.log('Database connected');
+// **** Run **** //
 
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
-    });
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-})();
+const SERVER_START_MSG = ('Express server started on port: ' + 
+  Env.Port.toString());
+
+server.listen(Env.Port, () => logger.info(SERVER_START_MSG));
