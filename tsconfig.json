@@ -9,7 +9,10 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@src/*": ["src/*"]
+      "@src/*": ["src/*"],
+      "@controller/*": ["src/controller/*"],
+      "@route/*": ["src/routes/*"],
+      "@service/*": ["src/services/*"]
     },
     "useUnknownInCatchVariables": false
   },

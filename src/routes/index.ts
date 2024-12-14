@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import Paths from './common/Paths';
-import authRrouter from './auth/auth.route';
+import authRrouter from '@route/auth/auth.route';
 
 // Init Routes
 const apiRouter = Router();

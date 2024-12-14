@@ -13,7 +13,7 @@ export const validateRequest = (
     res
       .status(HttpStatusCode.BadRequest)
       .json({ error: error.details[0].message });
-    return false; 
+    return false;
   }
 
   return true;

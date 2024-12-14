@@ -1,26 +1,20 @@
+import AuthResolver from '@src/resolvers/auth/auth.resolver';
+import { HttpStatusCode } from 'axios';
+import { loginUser } from './../../services/auth/auth.service';
 import { Request, Response } from 'express';
-import { registerUser, loginUser } from './../../services/auth/auth.service';
+import { validateRequest } from '@src/helpers/joi-validate.helper';
 import {
   validateRegister,
   validateLogin,
   validateTokenResponse,
 } from '@src/schema/auth/auth.schema';
-import { registerResolver } from '@src/resolvers/auth/auth.resolver';
-import { HttpStatusCode } from 'axios';
-import { validateRequest } from '@src/helpers/validate.schema';
 
 class AuthController {
   async register(req: Request, res: Response): Promise<void> {
-    try {
-      const isValid = validateRequest(validateRegister, req.body, res);
-      if (!isValid) return;
+    const isValid = validateRequest(validateRegister, req.body, res);
+    if (!isValid) return;
 
-      await registerResolver(req, res);
-    } catch (error) {
-      res
-        .status(HttpStatusCode.InternalServerError)
-        .json({ error: 'Internal Server Error' });
-    }
+    await AuthResolver.register(req, res);
   }
 
   async login(req: Request, res: Response): Promise<void> {
