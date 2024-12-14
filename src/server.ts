@@ -5,8 +5,6 @@ import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
 import HttpStatusCodes from '@src/common/HttpStatusCodes';
 import logger from 'jet-logger';
-import morgan from 'morgan';
-import path from 'path';
 import Paths from '@src/routes/common/Paths';
 import routes from '@src/routes';
 import { apiLimiter } from './config/rate-limit.config';
