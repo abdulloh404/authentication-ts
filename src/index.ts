@@ -6,19 +6,15 @@ import { sequelize } from './config/database.config';
 const SERVER_START_MSG =
   'Express server started on port: ' + Env.Port.toString();
 
-server.listen(Env.Port, () => logger.info(SERVER_START_MSG));
-
-const PORT = process.env.PORT || 4000;
-
 (async () => {
   try {
     await sequelize.authenticate();
-    console.log("Database connected");
+    console.log('Database connected');
 
-    server.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
+    server.listen(process.env.PORT, () => {
+      server.listen(Env.Port, () => logger.info(SERVER_START_MSG));
     });
   } catch (error) {
-    console.error("Unable to connect to the database:", error);
+    console.error('Unable to connect to the database:', error);
   }
 })();
