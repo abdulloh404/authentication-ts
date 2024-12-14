@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import { config } from '../environments/environment';
+import { config } from '../environment/environment';
 
 export const sendVerificationEmail = async (email: string, token: string) => {
   const transporter = nodemailer.createTransport({

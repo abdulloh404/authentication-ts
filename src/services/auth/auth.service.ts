@@ -1,9 +1,9 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
-import { User } from '../../models/userModel';
-import { config } from '../../environments/environment';
-import { sendResetPasswordEmail, sendVerificationEmail } from '../../utils/email';
+import { User } from '../../model/user.model';
+import { config } from '../../environment/environment';
+import { sendResetPasswordEmail, sendVerificationEmail } from '../../util/email.util';
 
 export const registerUser = async (username: string, email: string, password: string) => {
   const hashedPassword = await bcrypt.hash(password, 10);

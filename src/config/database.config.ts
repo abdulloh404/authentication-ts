@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import { config } from '../environments/environment';
+import { config } from '../environment/environment';
 
 export const sequelize = new Sequelize(
   config.mysql.database,
