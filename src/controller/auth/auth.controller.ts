@@ -1,17 +1,17 @@
 import AuthResolver from '@src/resolvers/auth/auth.resolver';
-import { HttpStatusCode } from 'axios';
+import HttpStatusCodes from '@src/common/HttpStatusCodes';
 import { loginUser } from './../../services/auth/auth.service';
 import { Request, Response } from 'express';
 import { validateRequest } from '@src/helpers/joi-validate.helper';
 import {
-  validateRegister,
+  validateRegisterRequest,
   validateLogin,
   validateTokenResponse,
 } from '@src/schema/auth/auth.schema';
 
 class AuthController {
   async register(req: Request, res: Response): Promise<void> {
-    const isValid = validateRequest(validateRegister, req.body, res);
+    const isValid = validateRequest(validateRegisterRequest, req.body, res);
     if (!isValid) return;
 
     await AuthResolver.register(req, res);
@@ -21,7 +21,9 @@ class AuthController {
     try {
       const { error: requestError } = validateLogin(req.body);
       if (requestError) {
-        res.status(400).json({ error: requestError.details[0].message });
+        res
+          .status(HttpStatusCodes.OK)
+          .json({ error: requestError.details[0].message });
         return;
       }
 
