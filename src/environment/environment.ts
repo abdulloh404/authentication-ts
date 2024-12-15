@@ -6,7 +6,7 @@ export const config = {
   host: process.env.HOST || 'localhost',
   jwtSecret: process.env.JWT_SECRET || '',
   mysql: {
-    host: process.env.MYSQL_HOST || 'localhost',
+    host: process.env.MYSQL_HOST || '127.0.0.1',
     user: process.env.MYSQL_USER || 'root',
     password: process.env.MYSQL_PASSWORD || 'frankent',
     database: process.env.MYSQL_DATABASE || 'authentication',
