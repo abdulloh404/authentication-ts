@@ -10,14 +10,6 @@ class AuthResolver {
 
       const user = await registerUser(username, email, password);
 
-      const { error: responseError } = validateUserResponse(user.toJSON());
-      if (responseError) {
-        res
-          .status(HttpStatusCode.InternalServerError)
-          .json({ error: 'Response validation failed' });
-        return;
-      }
-
       res.status(HttpStatusCode.Created).json(user);
     } catch (error) {
       res.status(HttpStatusCode.InternalServerError).json({

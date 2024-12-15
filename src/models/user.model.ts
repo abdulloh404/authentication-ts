@@ -3,23 +3,31 @@ import { sequelize } from '../config/database.config';
 
 interface UserAttributes {
   id: number;
-  username: string;
+  firstName: string;
+  lastName: string;
   email: string;
+  emailVerifiedAt: 'line' | 'facebook' | 'gmail' | 'google' | null;
+  isVerify: number;
   password: string;
-  isVerified: boolean;
-  verificationToken: string | null;
-  resetToken: string | null;
-  resetTokenExpiry: Date | null;
+  role: 'user' | 'admin';
+  loginBy: 'regular' | 'facebook' | 'line' | 'google';
+  lineId: string | null;
+  facebookId: string | null;
+  googleId: string | null;
+  rememberToken: string | null;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 interface UserCreationAttributes
   extends Optional<
     UserAttributes,
     | 'id'
-    | 'isVerified'
-    | 'verificationToken'
-    | 'resetToken'
-    | 'resetTokenExpiry'
+    | 'emailVerifiedAt'
+    | 'lineId'
+    | 'facebookId'
+    | 'googleId'
+    | 'rememberToken'
   > {}
 
 class User
@@ -27,13 +35,18 @@ class User
   implements UserAttributes
 {
   public id!: number;
-  public username!: string;
+  public firstName!: string;
+  public lastName!: string;
   public email!: string;
+  public emailVerifiedAt!: 'line' | 'facebook' | 'gmail' | 'google' | null;
+  public isVerify!: number;
   public password!: string;
-  public isVerified!: boolean;
-  public verificationToken!: string | null;
-  public resetToken!: string | null;
-  public resetTokenExpiry!: Date | null;
+  public role!: 'user' | 'admin';
+  public loginBy!: 'regular' | 'facebook' | 'line' | 'google';
+  public lineId!: string | null;
+  public facebookId!: string | null;
+  public googleId!: string | null;
+  public rememberToken!: string | null;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -46,33 +59,65 @@ User.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    username: {
-      type: DataTypes.STRING,
+    firstName: {
+      type: DataTypes.CHAR(40),
       allowNull: false,
-      unique: true,
+    },
+    lastName: {
+      type: DataTypes.CHAR(40),
+      allowNull: false,
     },
     email: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
       unique: true,
     },
-    password: {
-      type: DataTypes.STRING,
+    emailVerifiedAt: {
+      type: DataTypes.ENUM('line', 'facebook', 'gmail', 'google'),
+      allowNull: true,
+    },
+    isVerify: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      defaultValue: 0,
     },
-    isVerified: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
+    password: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      defaultValue: 'false',
     },
-    verificationToken: {
-      type: DataTypes.STRING,
+    role: {
+      type: DataTypes.ENUM('user', 'admin'),
+      allowNull: false,
+      defaultValue: 'user',
+    },
+    loginBy: {
+      type: DataTypes.ENUM('regular', 'facebook', 'line', 'google'),
+      allowNull: false,
+      defaultValue: 'regular',
+    },
+    lineId: {
+      type: DataTypes.STRING(255),
       allowNull: true,
     },
-    resetToken: {
-      type: DataTypes.STRING,
+    facebookId: {
+      type: DataTypes.STRING(255),
       allowNull: true,
     },
-    resetTokenExpiry: {
+    googleId: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    rememberToken: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+    updatedAt: {
       type: DataTypes.DATE,
       allowNull: true,
     },
@@ -80,6 +125,7 @@ User.init(
   {
     sequelize,
     tableName: 'users',
+    timestamps: true,
   }
 );
 
