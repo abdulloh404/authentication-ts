@@ -23,7 +23,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(express.json());
 app.use(corsConfig);
-app.use(morganConfig);
 app.use(bodyParser.json());
 app.use(apiLimiter, routes);
 app.use(cookieParser());
@@ -35,7 +34,6 @@ app.use(Paths.Base, BaseRouter);
 // );
 
 if (Env.NodeEnv === NodeEnvs.Dev.valueOf()) {
-  // app.use(morgan('dev'));
   app.use(morganConfig);
 }
 
