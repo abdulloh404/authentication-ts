@@ -36,7 +36,7 @@ export async function up(queryInterface, Sequelize) {
       defaultValue: 'false',
     },
     role: {
-      type: Sequelize.ENUM('user', 'admin'),
+      type: DataTypes.ENUM('user', 'admin'),
       allowNull: false,
       defaultValue: 'user',
     },
@@ -57,8 +57,16 @@ export async function up(queryInterface, Sequelize) {
       type: Sequelize.STRING(255),
       allowNull: true,
     },
-    rememberToken: {
-      type: Sequelize.STRING(255),
+    accessToken: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    refreshToken: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    tokenExpiry: {
+      type: DataTypes.DATE,
       allowNull: true,
     },
     createdAt: {
