@@ -28,11 +28,11 @@ app.use(bodyParser.json());
 app.use(apiLimiter, routes);
 app.use(cookieParser());
 app.use(Paths.Base, BaseRouter);
-app.use(
-  csrf({
-    cookie: true,
-  })
-);
+// app.use(
+//   csrf({
+//     cookie: true,
+//   })
+// );
 
 if (Env.NodeEnv === NodeEnvs.Dev.valueOf()) {
   // app.use(morgan('dev'));
