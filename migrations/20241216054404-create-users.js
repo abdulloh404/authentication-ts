@@ -8,34 +8,57 @@ export async function up(queryInterface, Sequelize) {
       autoIncrement: true,
       primaryKey: true,
     },
-    username: {
-      type: Sequelize.STRING,
+    firstName: {
+      type: Sequelize.CHAR(40),
       allowNull: false,
-      unique: true,
+    },
+    lastName: {
+      type: Sequelize.CHAR(40),
+      allowNull: false,
     },
     email: {
-      type: Sequelize.STRING,
+      type: Sequelize.STRING(255),
       allowNull: false,
       unique: true,
     },
-    password: {
-      type: Sequelize.STRING,
+    emailVerifiedAt: {
+      type: Sequelize.ENUM('line', 'facebook', 'gmail', 'google'),
+      allowNull: true,
+    },
+    isVerify: {
+      type: Sequelize.INTEGER,
       allowNull: false,
+      defaultValue: 0,
     },
-    isVerified: {
-      type: Sequelize.BOOLEAN,
-      defaultValue: false,
+    password: {
+      type: Sequelize.STRING(255),
+      allowNull: false,
+      defaultValue: 'false',
     },
-    verificationToken: {
-      type: Sequelize.STRING,
+    role: {
+      type: Sequelize.ENUM('user', 'admin'),
+      allowNull: false,
+      defaultValue: 'user',
+    },
+    loginBy: {
+      type: Sequelize.ENUM('regular', 'facebook', 'line', 'google'),
+      allowNull: false,
+      defaultValue: 'regular',
+    },
+    lineId: {
+      type: Sequelize.STRING(255),
       allowNull: true,
     },
-    resetToken: {
-      type: Sequelize.STRING,
+    facebookId: {
+      type: Sequelize.STRING(255),
       allowNull: true,
     },
-    resetTokenExpiry: {
-      type: Sequelize.DATE,
+    googleId: {
+      type: Sequelize.STRING(255),
+      allowNull: true,
+    },
+    rememberToken: {
+      type: Sequelize.STRING(255),
       allowNull: true,
     },
     createdAt: {
@@ -45,7 +68,7 @@ export async function up(queryInterface, Sequelize) {
     },
     updatedAt: {
       type: Sequelize.DATE,
-      allowNull: false,
+      allowNull: true,
       defaultValue: Sequelize.literal(
         'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
       ),
