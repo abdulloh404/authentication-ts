@@ -11,6 +11,21 @@ const SERVER_START_MY_SQL =
 
 (async () => {
   try {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     await sequelize.authenticate();
     logger.info(SERVER_START_MY_SQL);
 
