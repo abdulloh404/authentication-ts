@@ -1,0 +1,23 @@
+{
+    "name": "authentication-api",
+    "targets": {
+        "serve": {
+            "executor": "nx:run-commands",
+            "options": {
+                "command": "ts-node ./src/index.ts",
+                "cwd": "."
+            }
+        },
+        "build": {
+            "executor": "@nx/js:tsc",
+            "outputs": [
+                "{options.outputPath}"
+            ],
+            "options": {
+                "outputPath": "dist/",
+                "main": "./src/index.ts",
+                "tsConfig": "./tsconfig.json"
+            }
+        }
+    }
+}

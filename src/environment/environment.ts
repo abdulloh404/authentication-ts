@@ -8,9 +8,9 @@ export const config = {
   mysql: {
     host: process.env.MYSQL_HOST || '127.0.0.1',
     user: process.env.MYSQL_USER || 'root',
-    password: process.env.MYSQL_PASSWORD || 'frankent',
+    password: process.env.MYSQL_PASSWORD || '',
     database: process.env.MYSQL_DATABASE || 'authentication',
-    port: parseInt(process.env.MYSQL_PORT || '3306'),
+    port: process.env.MYSQL_PORT || '3306',
   },
   emailService: process.env.EMAIL_SERVICE,
   emailUser: process.env.EMAIL_USER,
