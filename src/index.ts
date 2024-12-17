@@ -18,9 +18,6 @@ import server from './server';
 
 
 
-
-
-
 import { sequelize } from './config/database.config';
 
 const SERVER_START_MSG =
