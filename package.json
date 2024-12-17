@@ -80,9 +80,11 @@
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.0"
   },
-  "**/*.{ts,js,json,css,scss,md}": [
-    "prettier --write",
-    "eslint --fix"
-  ],
+  "lint-staged": {
+    "!**/node_modules/**": "prettier --write",
+    "!dist/**": "prettier --write",
+    "**/*.{ts,js,json,css,scss,md}": "prettier --write",
+    "src/*.{ts,js,json,css,scss,md}": "prettier --write"
+  },
   "nx": {}
 }
