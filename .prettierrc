@@ -5,9 +5,5 @@
     "semi": true,
     "singleQuote": true,
     "trailingComma": "all",
-    "bracketSpacing": true,
-    "proseWrap": "always",
-    "endOfLine": "lf",
-    "insertPragma": false,
-    "requirePragma": false
+    "arrowParens": "avoid"
 }
