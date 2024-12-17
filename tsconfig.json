@@ -28,5 +28,5 @@
     "scripts",
     "eslint.config.ts"
   ],
-  "exclude": ["src/public/*"]
+  "exclude": ["src/public/*", "dist/*", "node_modules/*"]
 }
