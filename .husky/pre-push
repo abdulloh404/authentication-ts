@@ -1,2 +1,5 @@
 #!/bin/sh
-npx lint-staged
+
+echo "Formatting files before push..."
+npx prettier --write .
+git add .
