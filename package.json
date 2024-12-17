@@ -6,11 +6,11 @@
     "dev": "nx serve authentication-api",
     "watch": "nx run authentication-api:watch",
     "start": "node dist/apps/authentication-api/main.js",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "nx format:write",
+    "format:write": "nx format:write",
+    "format:check": "nx format:check"
   },
-
-
-
 
 
 
