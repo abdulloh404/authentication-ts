@@ -6,7 +6,7 @@
     "dev": "nx serve authentication-api",
     "watch": "nx run authentication-api:watch",
     "start": "node dist/apps/authentication-api/main.js",
-    "prepare": "husky install"
+    "prepare": "husky i"
   },
   "engines": {
     "node": ">=22.4.1"

@@ -18,11 +18,17 @@ const SERVER_START_MY_SQL =
   
   
   
-  
   'Database connected succesfully started with port :' + process.env.MYSQL_PORT;
 
-(async () => {
-  try {
+(async (
+
+
+  
+) => {
+  try
+  
+  
+  {
     await sequelize.authenticate();
     logger.info(SERVER_START_MY_SQL);
 
