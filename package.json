@@ -6,17 +6,8 @@
     "dev": "nx serve authentication-api",
     "watch": "nx run authentication-api:watch",
     "start": "node dist/apps/authentication-api/main.js",
-    "prepare": "husky install",
-    "format": "nx format:write",
-    "format:write": "nx format:write",
-    "format:check": "nx format:check"
+    "prepare": "husky install"
   },
-
-
-
-
-
-  
   "engines": {
     "node": ">=22.4.1"
   },
@@ -90,14 +81,9 @@
     "typescript-eslint": "^8.18.0"
   },
   "lint-staged": {
-    "*.ts": [
-      "eslint --fix --config .eslintrc.json"
-    ],
-    "*.{js,css,less,scss,md,ts,html,graphql}": [
-      "nx format:write --uncommitted"
-    ],
-    "*.json": [
-      "prettier --write --config .prettierrc"
+    "**/*.{ts,js,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
     ]
   },
   "nx": {}
