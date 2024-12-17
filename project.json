@@ -1,22 +1,23 @@
 {
+    "name": "authentication-api",
     "targets": {
+        "serve": {
+            "executor": "@nx/ts:node",
+            "options": {
+                "main": "./src/index.ts",
+                "tsConfig": "./tsconfig.json",
+                "watch": true
+            }
+        },
         "build": {
             "executor": "@nx/js:tsc",
             "outputs": [
                 "{options.outputPath}"
             ],
             "options": {
-                "outputPath": "dist/apps/authentication-api",
-                "main": "apps/authentication-api/src/main.ts",
-                "tsConfig": "apps/authentication-api/tsconfig.app.json"
-            }
-        },
-        "serve": {
-            "executor": "@nx/node:execute",
-            "options": {
-                "buildTarget": "authentication-api:build",
-                "runtime": "node",
-                "main": "apps/authentication-api/src/main.ts"
+                "outputPath": "dist/authentication-api",
+                "main": "./src/index.ts",
+                "tsConfig": "./tsconfig.json"
             }
         }
     }
