@@ -8,6 +8,15 @@
     "start": "node dist/apps/authentication-api/main.js",
     "prepare": "husky install"
   },
+
+
+
+
+
+
+
+
+  
   "engines": {
     "node": ">=22.4.1"
   },
