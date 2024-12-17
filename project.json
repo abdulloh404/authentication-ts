@@ -2,11 +2,10 @@
     "name": "authentication-api",
     "targets": {
         "serve": {
-            "executor": "@nx/ts:node",
+            "executor": "nx:run-commands",
             "options": {
-                "main": "./src/index.ts",
-                "tsConfig": "./tsconfig.json",
-                "watch": true
+                "command": "ts-node ./src/index.ts",
+                "cwd": "."
             }
         },
         "build": {
