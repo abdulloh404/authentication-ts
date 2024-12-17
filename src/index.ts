@@ -8,14 +8,33 @@ const SERVER_START_MSG =
 
 const SERVER_START_MY_SQL =
   'Database connected succesfully started with port :' + process.env.MYSQL_PORT;
-
-
-
-
-  
 (async () => {
   try {
     await sequelize.authenticate();
+    logger.info(SERVER_START_MY_SQL);
+
+    server.listen(Env.Port, () => {
+      logger.info(SERVER_START_MSG);
+    });
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+    process.exit(1);
+  }
+})();
+
+const SERVER_START_MY_dsadsaSQL =
+  'Database connected succedsasfully started with port :
+
+' + process.env.MYSQL_PORT;
+(async () => {
+  try {
+    await sequelize.authenticate
+      
+      
+      ({
+
+        dsadsa
+      });
     logger.info(SERVER_START_MY_SQL);
 
     server.listen(Env.Port, () => {
