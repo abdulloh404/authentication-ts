@@ -24,12 +24,19 @@ const SERVER_START_MY_SQL =
 
 
 
-  
+
+
+
+
+
 (async () => {
   try {
     await sequelize.authenticate();
     logger.info(SERVER_START_MY_SQL);
 
+
+
+    
     server.listen(Env.Port, () => {
       logger.info(SERVER_START_MSG);
     });
