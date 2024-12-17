@@ -9,22 +9,6 @@ import { sequelize } from './config/database.config';
 const SERVER_START_MSG =
   'Express server started on port: ' + Env.Port.toString();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 const SERVER_START_MY_SQL =
   'Database connected succesfully started with port :' + process.env.MYSQL_PORT;
 
