@@ -22,9 +22,6 @@ const SERVER_START_MY_SQL =
 
 
 
-
-
-
     
     await sequelize.authenticate();
     logger.info(SERVER_START_MY_SQL);
