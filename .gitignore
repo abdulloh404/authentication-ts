@@ -6,3 +6,6 @@ config.js
 .DS_Store
 **/.DS_Store
 **/.log
+
+.nx/cache
+.nx/workspace-data
