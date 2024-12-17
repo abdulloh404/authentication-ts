@@ -81,10 +81,10 @@
     "typescript-eslint": "^8.18.0"
   },
   "lint-staged": {
-    "!**/node_modules/**": "prettier --write",
-    "!dist/**": "prettier --write",
-    "**/*.{ts,js,json,css,scss,md}": "prettier --write",
-    "src/*.{ts,js,json,css,scss,md}": "prettier --write"
+    "**/*.{js,ts,json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "nx": {}
 }

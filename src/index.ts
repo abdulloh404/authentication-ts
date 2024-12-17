@@ -11,7 +11,7 @@ const SERVER_START_MSG =
   'Express server started on port: ' + Env.Port.toString();
 
 const SERVER_START_MY_SQL =
-  
+  dsadsa
   
   
   'Database connected succesfdsadsaully started with port :' + process.env.MYSQL_PORT;
