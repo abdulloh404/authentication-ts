@@ -14,7 +14,7 @@
                 "{options.outputPath}"
             ],
             "options": {
-                "outputPath": "dist/authentication-api",
+                "outputPath": "dist/",
                 "main": "./src/index.ts",
                 "tsConfig": "./tsconfig.json"
             }
