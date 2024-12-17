@@ -65,16 +65,38 @@
     "eslint-plugin-n": "^17.15.0",
     "find": "^0.3.0",
     "fs-extra": "^11.2.0",
+    "husky": "^9.1.7",
     "jasmine": "^5.5.0",
     "jiti": "^2.4.1",
+    "lint-staged": "^15.2.11",
     "nodemon": "^3.1.9",
     "nx": "20.2.2",
+    "prettier": "^3.4.2",
     "sequelize-cli": "^6.6.2",
     "supertest": "^7.0.0",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.18.0"
+  },
+  "lint-staged": {
+    "**/*.{js,ts,json,css,scss,md}": [
+      "prettier --write",
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      "git add"
+    ]
   },
   "nx": {}
 }
