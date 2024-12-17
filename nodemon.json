@@ -7,6 +7,5 @@
         "src/**/*.spec.ts",
         "node_modules"
     ],
-    "exec": "npx nx serve authentication-api"
+    "exec": "ts-node ./src/index.ts"
 }
-

@@ -4,7 +4,7 @@
         "serve": {
             "executor": "nx:run-commands",
             "options": {
-                "command": "nodemon --watch src --ext ts,js,json --exec ts-node ./src/index.ts",
+                "command": "nodemon --quiet --watch src --ext ts,js,json --exec ts-node ./src/index.ts",
                 "cwd": "."
             }
         },

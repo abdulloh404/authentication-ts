@@ -9,14 +9,10 @@ start_dev() {
   fi
 
   # รันเซิร์ฟเวอร์ใน background
-  npx nx serve authentication-api --watch &
-
-  DEV_PID=$!  # เก็บ Process ID ของโปรเซส
-  echo "NX development server started with PID $DEV_PID"
-
-  # หน่วงเวลาให้เซิร์ฟเวอร์เริ่มต้นทำงาน
-  echo "Waiting for the server to initialize..."
-  sleep 5  # หน่วงเวลา 5 วินาที (ปรับตามต้องการ)
+  npx nx serve authentication-api &
+  # DEV_PID=$!  # เก็บ Process ID ของโปรเซส
+  # echo "NX development server started with PID $DEV_PID"
+  sleep 5  # หน่วงเวลา 5 วินาที
 
 }
 
