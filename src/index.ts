@@ -37,6 +37,10 @@ const SERVER_START_MY_SQL =
     
     );
   }
+
+
+
+  
   
   catch (error) {
     console.error('Unable to connect to the database:', error);
