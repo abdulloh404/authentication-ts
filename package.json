@@ -83,14 +83,5 @@
   "lint-staged": {
     "**/*.{ts,js,json,css,scss,md}": "prettier --write"
   },
-
-
-
-
-
-
-
-
-  
   "nx": {}
 }
