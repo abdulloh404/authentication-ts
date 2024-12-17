@@ -8,4 +8,3 @@ authRrouter.post(Paths.Auth.register, AuthController.register);
 authRrouter.post(Paths.Auth.login, AuthController.login);
 
 export default authRrouter;
-

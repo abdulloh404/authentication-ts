@@ -4,7 +4,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 export const authenticate = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const token = req.headers.authorization?.split(' ')[1];
 
@@ -15,7 +15,7 @@ export const authenticate = (
   try {
     const decoded = jwt.verify(
       token,
-      process.env.JWT_SECRET || ''
+      process.env.JWT_SECRET || '',
     ) as JwtPayload;
 
     if (decoded && typeof decoded === 'object' && 'id' in decoded) {

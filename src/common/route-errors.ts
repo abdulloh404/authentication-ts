@@ -1,13 +1,11 @@
 import HttpStatusCodes from '@src/common/HttpStatusCodes';
 
-
 export interface IValidationErrFormat {
   error: string;
   parameter: string;
   value?: unknown;
   'more-info'?: string;
 }
-
 
 /**
  * Error with status code and message.

@@ -6,11 +6,11 @@ import { Schema } from 'joi';
 export const validateRequest = (
   schema: Schema,
   data: any,
-  res: Response
+  res: Response,
 ): boolean => {
   const { error } = schema.validate(data, { abortEarly: false }); // ตั้งค่าให้รวบรวมข้อผิดพลาดทั้งหมด
   if (error) {
-    const missingKeys = error.details.map((err) => err.path.join('.'));
+    const missingKeys = error.details.map(err => err.path.join('.'));
 
     res.status(HttpStatusCode.BadRequest).json({
       error: 'Validation Error',
@@ -25,7 +25,7 @@ export const validateRequest = (
 export const validateResponse = (
   schema: Schema,
   data: any,
-  res: Response
+  res: Response,
 ): boolean => {
   const { error } = schema.validate(data);
 

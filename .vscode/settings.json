@@ -1,13 +1,13 @@
 {
-    "files.exclude": {
-        "**/.git": false,
-        "**/.svn": false,
-        "**/.hg": false,
-        "**/CVS": false,
-        "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "**/node_modules": false,
-        "**/*.log": false
-    },
-    "explorerExclude.backup": {}
+  "files.exclude": {
+    "**/.git": false,
+    "**/.svn": false,
+    "**/.hg": false,
+    "**/CVS": false,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": false,
+    "**/*.log": false
+  },
+  "explorerExclude.backup": {}
 }

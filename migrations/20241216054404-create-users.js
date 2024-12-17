@@ -78,7 +78,7 @@ export async function up(queryInterface, Sequelize) {
       type: Sequelize.DATE,
       allowNull: true,
       defaultValue: Sequelize.literal(
-        'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+        'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
       ),
     },
   });
