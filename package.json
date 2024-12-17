@@ -2,15 +2,10 @@
   "name": "authentication-api",
   "version": "1.0.0",
   "scripts": {
-    "build": "ts-node ./scripts/build.ts",
-    "clean-install": "rm -rf ./node_modules && rm -r package-lock.json && npm i",
-    "dev": "nodemon --watch src --exec ts-node ./src/index.ts",
-    "dev:hot": "nodemon --exec \"npm run dev\" --watch ./src --ext .ts",
-    "lint": "eslint --flag unstable_ts_config",
-    "start": "NODE_ENV=production node -r ./config.js ./dist",
-    "test": "NODE_ENV=test ts-node ./spec",
-    "test:hot": "nodemon --exec \"npm run test\" --watch ./src --watch ./spec --ext .ts",
-    "type-check": "tsc --noEmit"
+    "build": "nx build authentication-api",
+    "dev": "nx serve authentication-api",
+    "watch": "nx run authentication-api:watch",
+    "start": "node dist/apps/authentication-api/main.js"
   },
   "engines": {
     "node": ">=22.4.1"
