@@ -32,16 +32,21 @@ const SERVER_START_MY_SQL =
 (async () => {
   try {
     await sequelize.authenticate();
+
+
+
     logger.info(SERVER_START_MY_SQL);
 
-
-dsadsadsa
     
     server.listen(Env.Port, () => {
       logger.info(SERVER_START_MSG);
     });
   } catch (error) {
-    console.error('Unable to connect to the database:', error);
-    process.exit(1);
+    console.error('Unable to connect to the database:', error)
+  
+  
+    process.exit
+      
+      (1);
   }
 })();
