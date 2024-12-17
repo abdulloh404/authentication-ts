@@ -28,6 +28,9 @@ const SERVER_START_MY_SQL =
     );
     logger.info(SERVER_START_MY_SQL);
 
+
+
+    
     server.listen(Env.Port, () => {
       logger.info(SERVER_START_MSG);
     }
