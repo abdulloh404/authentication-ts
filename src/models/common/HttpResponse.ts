@@ -4,3 +4,10 @@ export interface IHttpResponse {
   message: string;
   details: string;
 }
+
+export interface Request {
+  locals: {
+    payload: any;
+    dataRequest: any;
+  };
+}

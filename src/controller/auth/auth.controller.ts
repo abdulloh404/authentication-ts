@@ -10,11 +10,18 @@ import {
 } from '@src/schema/auth/auth.schema';
 
 class AuthController {
-  async register(req: Request, res: Response): Promise<void> {
-    const isValid = validateRequest(validateRegisterRequest, req.body, res);
-    if (!isValid) return;
+  async register(payload: any, dataRequest: any): Promise<any> {
+    const isValid = validateRequest(validateRegisterRequest, dataRequest);
 
-    await AuthResolver.register(req, res);
+    if (!isValid) {
+      console.log('Validation failed: Invalid dataRequest');
+      return;
+    }
+    console.log(dataRequest);
+    console.log(payload);
+    // const response = await AuthResolver.register(payload, dataRequest);
+    const response = null;
+    return response;
   }
 
   async login(req: Request, res: Response): Promise<void> {
