@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import { sequelize } from '@config/database.config';
 
-export interface UserAttributes {
+interface UserAttributes {
   id: number;
   first_name: string;
   last_name: string;
@@ -19,7 +19,7 @@ export interface UserAttributes {
   updated_at?: Date;
 }
 
-export interface UserCreationAttributes
+interface UserCreationAttributes
   extends Optional<
     UserAttributes,
     | 'id'
@@ -32,7 +32,7 @@ export interface UserCreationAttributes
     | 'remember_token'
   > {}
 
-export class User
+class User
   extends Model<UserAttributes, UserCreationAttributes>
   implements UserAttributes
 {
