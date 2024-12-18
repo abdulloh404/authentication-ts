@@ -16,6 +16,8 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "csrf": "^3.1.0",
+    "csrf-tokens": "^1.0.4",
+    "csurf": "^1.11.0",
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
@@ -36,6 +38,7 @@
     "mysql2": "^3.11.5",
     "nodemailer": "^6.9.16",
     "sequelize": "^6.37.5",
+    "uid-safe": "^2.1.5",
     "winston": "^3.17.0"
   },
   "devDependencies": {
