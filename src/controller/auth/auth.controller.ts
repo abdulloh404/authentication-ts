@@ -16,13 +16,13 @@ class AuthController {
       console.log('Validation failed: Invalid dataRequest');
       return;
     }
-    console.log(dataRequest);
-    // console.log(payload);
+    // console.log(dataRequest);
+    console.log(payload);
     // const response = await AuthResolver.register(payload, dataRequest);
     const response = {
       success: true,
       status: 201,
-      data: dataRequest,
+      data: payload,
     };
 
     return response;

@@ -14,10 +14,8 @@ authRrouter.post(
         payload: any;
         dataRequest: any;
       };
-
-      const result = await AuthController.register(payload, dataRequest);
-
-      res.status(result.status).json(result);
+      const response = await AuthController.register(payload, dataRequest);
+      res.status(response.status).json(response);
     } catch (error) {
       next(error);
     }
