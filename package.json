@@ -2,21 +2,28 @@
   "name": "authentication-api",
   "version": "1.0.0",
   "scripts": {
+    "start": "node dist/apps/authentication-api/main.js",
     "build": "nx build authentication-api",
     "dev": "nx serve authentication-api",
     "watch": "nx run authentication-api:watch",
-    "start": "node dist/apps/authentication-api/main.js",
-    "prepare": "husky install"
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "migrate": "ts-node ./node_modules/.bin/sequelize-cli db:migrate",
+    "migrate:undo": "ts-node ./node_modules/.bin/sequelize-cli db:migrate:undo",
+    "seed": "ts-node ./node_modules/.bin/sequelize-cli db:seed:all"
   },
   "engines": {
     "node": ">=22.4.1"
   },
   "dependencies": {
+    "@types/sequelize": "^4.28.20",
     "bcryptjs": "^2.4.3",
     "cookie": "^1.0.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "csrf": "^3.1.0",
+    "csrf-tokens": "^1.0.4",
+    "csurf": "^1.11.0",
     "dayjs": "^1.11.13",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
@@ -37,9 +44,11 @@
     "mysql2": "^3.11.5",
     "nodemailer": "^6.9.16",
     "sequelize": "^6.37.5",
+    "uid-safe": "^2.1.5",
     "winston": "^3.17.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.17.0",
     "@nrwl/nx": "^7.8.7",
     "@nx/node": "^20.2.2",
@@ -62,8 +71,11 @@
     "@types/node": "^22.10.2",
     "@types/nodemailer": "^6.4.17",
     "@types/supertest": "^6.0.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "@typescript-eslint/parser": "^8.18.1",
     "eslint": "^9.17.0",
     "eslint-plugin-n": "^17.15.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "find": "^0.3.0",
     "fs-extra": "^11.2.0",
     "husky": "^9.1.7",
@@ -78,10 +90,10 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.0"
+    "typescript-eslint": "^8.18.1"
   },
   "lint-staged": {
-    "**/*.{ts,js,json,css,scss,md}": "prettier --write"
+    "**/*.{ts,js, cjs,json,css,scss,md}": "prettier --write"
   },
   "nx": {}
 }

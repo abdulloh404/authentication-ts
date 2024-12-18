@@ -1,37 +1,37 @@
-'use strict';
+import { QueryInterface, DataTypes } from 'sequelize';
 
 /** @type {import('sequelize-cli').Migration} */
-export async function up(queryInterface, Sequelize) {
+export async function up(queryInterface: QueryInterface): Promise<void> {
   await queryInterface.createTable('users', {
     id: {
-      type: Sequelize.INTEGER.UNSIGNED,
+      type: DataTypes.INTEGER.UNSIGNED,
       autoIncrement: true,
       primaryKey: true,
     },
     firstName: {
-      type: Sequelize.CHAR(40),
+      type: DataTypes.CHAR(40),
       allowNull: false,
     },
     lastName: {
-      type: Sequelize.CHAR(40),
+      type: DataTypes.CHAR(40),
       allowNull: false,
     },
     email: {
-      type: Sequelize.STRING(255),
+      type: DataTypes.STRING(255),
       allowNull: false,
       unique: true,
     },
     emailVerifiedAt: {
-      type: Sequelize.ENUM('line', 'facebook', 'gmail', 'google'),
+      type: DataTypes.ENUM('line', 'facebook', 'gmail', 'google'),
       allowNull: true,
     },
     isVerify: {
-      type: Sequelize.INTEGER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,
     },
     password: {
-      type: Sequelize.STRING(255),
+      type: DataTypes.STRING(255),
       allowNull: false,
       defaultValue: 'false',
     },
@@ -41,20 +41,20 @@ export async function up(queryInterface, Sequelize) {
       defaultValue: 'user',
     },
     loginBy: {
-      type: Sequelize.ENUM('regular', 'facebook', 'line', 'google'),
+      type: DataTypes.ENUM('regular', 'facebook', 'line', 'google'),
       allowNull: false,
       defaultValue: 'regular',
     },
     lineId: {
-      type: Sequelize.STRING(255),
+      type: DataTypes.STRING(255),
       allowNull: true,
     },
     facebookId: {
-      type: Sequelize.STRING(255),
+      type: DataTypes.STRING(255),
       allowNull: true,
     },
     googleId: {
-      type: Sequelize.STRING(255),
+      type: DataTypes.STRING(255),
       allowNull: true,
     },
     accessToken: {
@@ -70,19 +70,18 @@ export async function up(queryInterface, Sequelize) {
       allowNull: true,
     },
     createdAt: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       allowNull: false,
-      defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
+      defaultValue: DataTypes.NOW,
     },
     updatedAt: {
-      type: Sequelize.DATE,
+      type: DataTypes.DATE,
       allowNull: true,
-      defaultValue: Sequelize.literal(
-        'CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP',
-      ),
+      defaultValue: DataTypes.NOW,
     },
   });
 }
-export async function down(queryInterface, Sequelize) {
+
+export async function down(queryInterface: QueryInterface): Promise<void> {
   await queryInterface.dropTable('users');
 }

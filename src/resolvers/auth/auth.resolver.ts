@@ -1,21 +1,25 @@
-import { Request, Response } from 'express';
-import { registerUser } from '@src/services/auth/auth.service';
-import { validateUserResponse } from '@src/schema';
-import { HttpStatusCode } from 'axios';
+import { promises } from 'dns';
+import { NextFunction, Request, Response } from 'express';
 
 class AuthResolver {
-  async register(req: Request, res: Response): Promise<void> {
+  async middleware(
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ): Promise<any> {
     try {
-      const { username, email, password } = req.body;
+      const requestBody = req.body;
+      const requestData = {
+        headers: req.headers,
+        params: req.params,
+        query: req.query,
+      };
 
-      const user = await registerUser(username, email, password);
+      res.locals.data = { requestBody, requestData };
 
-      res.status(HttpStatusCode.Created).json(user);
+      next();
     } catch (error) {
-      res.status(HttpStatusCode.InternalServerError).json({
-        error:
-          error instanceof Error ? error.message : 'Unknown error occurred',
-      });
+      next(error);
     }
   }
 }

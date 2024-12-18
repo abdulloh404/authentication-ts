@@ -4,16 +4,18 @@
     "module": "CommonJS",
     "outDir": "./dist",
     "lib": ["ES2022"],
-    "strict": true,
     "baseUrl": "./",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "strict": true,
     "paths": {
       "@src/*": ["src/*"],
-      "@controller/*": ["src/controller/*"],
       "@route/*": ["src/routes/*"],
-      "@service/*": ["src/services/*"]
+      "@service/*": ["src/services/*"],
+      "@config/*": ["src/config/*"],
+      "@controller/*": ["src/controller/*"],
+      "@environment/*": ["src/environment/*"]
     },
     "useUnknownInCatchVariables": false
   },
@@ -26,7 +28,8 @@
     "spec/**/*.ts",
     "config.ts",
     "scripts",
-    "eslint.config.ts"
+    "eslint.config.ts",
+    "migrations/**/*.ts"
   ],
   "exclude": ["src/public/*", "dist/*", "node_modules/*"]
 }

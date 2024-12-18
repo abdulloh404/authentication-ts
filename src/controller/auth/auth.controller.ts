@@ -2,19 +2,30 @@ import AuthResolver from '@src/resolvers/auth/auth.resolver';
 import HttpStatusCodes from '@src/common/HttpStatusCodes';
 import { loginUser } from './../../services/auth/auth.service';
 import { Request, Response } from 'express';
-import { validateRequest } from '@src/helpers/joi-validate.helper';
+import { joi } from '@src/helpers/joi-validate.helper';
 import {
-  validateRegisterRequest,
   validateLogin,
+  validateRegisterRequest,
   validateTokenResponse,
 } from '@src/schema/auth/auth.schema';
 
 class AuthController {
-  async register(req: Request, res: Response): Promise<void> {
-    const isValid = validateRequest(validateRegisterRequest, req.body, res);
-    if (!isValid) return;
+  async register(payload: any, dataRequest: any): Promise<any> {
+    const isValid = joi(validateRegisterRequest, dataRequest);
+    if (!isValid) {
+      console.log('Validation failed: Invalid dataRequest');
+      return;
+    }
+    // console.log(dataRequest);
+    console.log(payload);
+    // const response = await AuthResolver.register(payload, dataRequest);
+    const response = {
+      success: true,
+      status: 201,
+      data: payload,
+    };
 
-    await AuthResolver.register(req, res);
+    return response;
   }
 
   async login(req: Request, res: Response): Promise<void> {
