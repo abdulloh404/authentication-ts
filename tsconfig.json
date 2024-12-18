@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2024",
+    "target": "ES2022",
     "module": "CommonJS",
     "outDir": "./dist",
-    "lib": ["ES2024"],
+    "lib": ["ES2022"],
     "baseUrl": "./",
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -11,9 +11,9 @@
     "strict": true,
     "paths": {
       "@src/*": ["src/*"],
-      "@controller/*": ["src/controller/*"],
       "@route/*": ["src/routes/*"],
-      "@service/*": ["src/services/*"]
+      "@service/*": ["src/services/*"],
+      "@controller/*": ["src/controller/*"]
     },
     "useUnknownInCatchVariables": false
   },
