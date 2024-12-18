@@ -11,6 +11,7 @@ interface UserAttributes {
   password: string;
   role: 'user' | 'admin';
   login_by: 'regular' | 'facebook' | 'line' | 'google';
+  remember_token?: string;
   line_id?: string;
   facebook_id?: string;
   google_id?: string;
@@ -67,7 +68,7 @@ User.init(
       allowNull: false,
     },
     email: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(164),
       allowNull: false,
       unique: true,
     },
@@ -81,12 +82,16 @@ User.init(
       defaultValue: 0,
     },
     password: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(132),
       allowNull: false,
-      defaultValue: 'false',
     },
     role: {
       type: DataTypes.ENUM('user', 'admin'),
+      allowNull: false,
+      defaultValue: 'user',
+    },
+    remember_token: {
+      type: DataTypes.STRING(132),
       allowNull: false,
       defaultValue: 'user',
     },
@@ -96,15 +101,15 @@ User.init(
       defaultValue: 'regular',
     },
     line_id: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(132),
       allowNull: true,
     },
     facebook_id: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(132),
       allowNull: true,
     },
     google_id: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(132),
       allowNull: true,
     },
     created_at: {

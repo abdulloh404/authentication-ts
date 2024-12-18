@@ -22,7 +22,7 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      email_verifiedAt: {
+      email_verified_at: {
         type: Sequelize.ENUM('line', 'facebook', 'gmail', 'google'),
         allowNull: true,
       },
@@ -44,6 +44,10 @@ module.exports = {
         type: Sequelize.ENUM('regular', 'facebook', 'line', 'google'),
         allowNull: false,
         defaultValue: 'regular',
+      },
+      remember_token: {
+        type: Sequelize.STRING(255),
+        allowNull: true,
       },
       line_id: {
         type: Sequelize.STRING(64),
