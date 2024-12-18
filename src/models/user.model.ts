@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import { sequelize } from '@config/database.config';
 
-interface UserAttributes {
+export interface UserAttributes {
   id: number;
   first_name: string;
   last_name: string;
@@ -11,7 +11,7 @@ interface UserAttributes {
   password: string;
   role: 'user' | 'admin';
   login_by: 'regular' | 'facebook' | 'line' | 'google';
-  remember_token?: string;
+  remember_token?: string | null;
   line_id?: string;
   facebook_id?: string;
   google_id?: string;
@@ -19,7 +19,7 @@ interface UserAttributes {
   updated_at?: Date;
 }
 
-interface UserCreationAttributes
+export interface UserCreationAttributes
   extends Optional<
     UserAttributes,
     | 'id'
@@ -29,9 +29,10 @@ interface UserCreationAttributes
     | 'google_id'
     | 'created_at'
     | 'updated_at'
+    | 'remember_token'
   > {}
 
-class User
+export class User
   extends Model<UserAttributes, UserCreationAttributes>
   implements UserAttributes
 {
@@ -51,7 +52,6 @@ class User
   public updated_at?: Date;
 }
 
-// กำหนด Schema
 User.init(
   {
     id: {
@@ -92,8 +92,7 @@ User.init(
     },
     remember_token: {
       type: DataTypes.STRING(132),
-      allowNull: false,
-      defaultValue: 'user',
+      allowNull: true,
     },
     login_by: {
       type: DataTypes.ENUM('regular', 'facebook', 'line', 'google'),

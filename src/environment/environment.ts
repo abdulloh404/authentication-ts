@@ -4,7 +4,9 @@ dotenv.config();
 export const config = {
   port: process.env.PORT,
   host: process.env.HOST,
-  jwtSecret: process.env.JWT_SECRET,
+  jwtSecret:
+    process.env.JWT_SECRET ||
+    '2Z8Oh2JievFDxTvuJQeWyLzV+3AH35pS9wW88H4fCcpzpQH58eMLlCtc8my854znOQ9xm2SqM4by47bODNIW3A',
   mysql: {
     host: process.env.MYSQL_HOST,
     user: process.env.MYSQL_USER,

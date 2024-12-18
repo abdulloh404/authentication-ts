@@ -1,84 +1,55 @@
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-import { config } from '../../environment/environment';
-import { User } from '@src/models/user.model';
-import {
-  sendResetPasswordEmail,
-  sendVerificationEmail,
-} from '../../util/email.util';
+import User from '@src/models/user.model';
+class AuthService {
+  async registerUserService(requestBody: any): Promise<any> {
+    try {
+      const {
+        first_name,
+        last_name,
+        email,
+        password,
+        role = 'user',
+        login_by = 'regular',
+      } = requestBody;
 
-export const registerUser = async (
-  username: string,
-  email: string,
-  password: string,
-) => {
-  const hashedPassword = await bcrypt.hash(password, 10);
-  const verificationToken = jwt.sign({ email }, config.jwtSecret, {
-    expiresIn: '1d',
-  });
-  const user = await User.create({
-    username,
-    email,
-    password: hashedPassword,
-    verificationToken,
-  });
-  await sendVerificationEmail(user.email, verificationToken);
-  return user;
-};
+      const existingUser = await User.findOne({ where: { email } });
+      if (existingUser) {
+        return {
+          success: false,
+          message: 'Email is already in use.',
+        };
+      }
 
-export const loginUser = async (username: string, password: string) => {
-  const user = await User.findOne({ where: { username } });
-  if (!user) throw new Error('User not found');
-  if (!user.isVerified) throw new Error('Email not verified');
+      const hashedPassword = await bcrypt.hash(password, 10);
 
-  const isMatch = await bcrypt.compare(password, user.password);
-  if (!isMatch) throw new Error('Invalid credentials');
+      const user = await User.create({
+        first_name,
+        last_name,
+        email,
+        password: hashedPassword,
+        role,
+        login_by,
+        is_verify: 0,
+      });
 
-  const token = jwt.sign({ id: user.id }, config.jwtSecret, {
-    expiresIn: '1h',
-  });
-  return token;
-};
+      return {
+        success: true,
+        data: {
+          id: user.id,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          email: user.email,
+          role: user.role,
+          login_by: user.login_by,
+        },
+      };
+    } catch (error: any) {
+      return {
+        success: false,
+        message: error.message,
+      };
+    }
+  }
+}
 
-export const verifyEmail = async (token: string) => {
-  const decoded: any = jwt.verify(token, config.jwtSecret);
-  const user = await User.findOne({ where: { email: decoded.email } });
-  if (!user) throw new Error('Invalid token');
-
-  user.isVerified = true;
-  user.verificationToken = null;
-  await user.save();
-  return user;
-};
-
-export const requestPasswordReset = async (email: string) => {
-  const user = await User.findOne({ where: { email } });
-  if (!user) throw new Error('User not found');
-
-  const resetToken = jwt.sign({ email: user.email }, config.jwtSecret, {
-    expiresIn: '1h',
-  });
-  user.resetToken = resetToken;
-  user.resetTokenExpiry = new Date(Date.now() + 3600000); // 1 hour
-  await user.save();
-
-  await sendResetPasswordEmail(user.email, resetToken);
-  return user;
-};
-
-export const resetPassword = async (token: string, newPassword: string) => {
-  const decoded: any = jwt.verify(token, config.jwtSecret);
-  const user = await User.findOne({
-    where: { email: decoded.email, resetToken: token },
-  });
-  if (!user) throw new Error('Invalid or expired token');
-  if (user.resetTokenExpiry && user.resetTokenExpiry < new Date())
-    throw new Error('Token expired');
-
-  const hashedPassword = await bcrypt.hash(newPassword, 10);
-  user.password = hashedPassword;
-  user.resetToken = null;
-  user.resetTokenExpiry = null;
-  await user.save();
-  return user;
-};
+export default new AuthService();

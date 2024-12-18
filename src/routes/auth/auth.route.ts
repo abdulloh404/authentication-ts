@@ -19,10 +19,4 @@ authRrouter.post(
   },
 );
 
-authRrouter.post(
-  Paths.Auth.login,
-  AuthResolver.middleware,
-  AuthController.login,
-);
-
 export default authRrouter;
