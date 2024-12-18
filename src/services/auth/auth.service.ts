@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import User from '@src/models/user.model';
+
 class AuthService {
   async registerUserService(requestBody: any): Promise<any> {
     try {
