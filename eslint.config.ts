@@ -31,66 +31,49 @@ export default tseslint.config(
   },
   {
     rules: {
-      '@typescript-eslint/explicit-member-accessibility': 'warn',
-      '@typescript-eslint/no-misused-promises': 0,
-      '@typescript-eslint/no-floating-promises': 0,
-      '@typescript-eslint/no-confusing-void-expression': 0,
-      '@typescript-eslint/no-unnecessary-condition': 0,
-      '@typescript-eslint/restrict-template-expressions': [
+      '@typescript-eslint/no-unused-vars': [
         'error',
-        { allowNumber: true },
+        { argsIgnorePattern: '^_' },
       ],
-      '@typescript-eslint/restrict-plus-operands': [
-        'warn',
-        { allowNumberAndString: true },
-      ],
-      '@typescript-eslint/no-unused-vars': 'warn',
-      '@typescript-eslint/no-unsafe-enum-comparison': 0,
-      '@typescript-eslint/no-unnecessary-type-parameters': 0,
-      '@stylistic/js/no-extra-semi': 'warn',
+      '@typescript-eslint/no-unused-expressions': 'error',
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/explicit-function-return-type': 'error',
+      '@typescript-eslint/explicit-module-boundary-types': 'error',
+      '@typescript-eslint/strict-boolean-expressions': 'error',
+      '@typescript-eslint/no-non-null-assertion': 'error',
+      '@typescript-eslint/no-floating-promises': 'error',
+      'no-console': ['error', { allow: ['warn', 'error'] }],
+      indent: ['error', 2],
+      semi: ['error', 'always'],
+      quotes: ['error', 'single'],
+      'comma-dangle': ['error', 'always-multiline'],
       'max-len': [
-        'warn',
+        'error',
         {
           code: 80,
+          tabWidth: 2,
+          ignoreUrls: true,
         },
       ],
-      '@stylistic/ts/semi': ['warn', 'always'],
+
+      '@typescript-eslint/no-unsafe-enum-comparison': 'error',
+      '@typescript-eslint/no-unnecessary-type-arguments': 'error',
+      '@typescript-eslint/no-unnecessary-condition': 'error',
+      'prefer-const': 'error',
+      'no-extra-boolean-cast': 'error',
       '@stylistic/ts/member-delimiter-style': [
-        'warn',
+        'error',
         {
           multiline: {
-            delimiter: 'comma',
+            delimiter: 'semi',
             requireLast: true,
           },
           singleline: {
-            delimiter: 'comma',
-            requireLast: false,
-          },
-          overrides: {
-            interface: {
-              singleline: {
-                delimiter: 'semi',
-                requireLast: false,
-              },
-              multiline: {
-                delimiter: 'semi',
-                requireLast: true,
-              },
-            },
+            delimiter: 'semi',
+            requireLast: true,
           },
         },
       ],
-      '@typescript-eslint/no-non-null-assertion': 0,
-      '@typescript-eslint/no-unused-expressions': 'warn',
-      'comma-dangle': ['warn', 'always-multiline'],
-      'no-console': 1,
-      'no-extra-boolean-cast': 0,
-      indent: ['warn', 2],
-      quotes: ['warn', 'single'],
-      'n/no-process-env': 1,
-      'n/no-missing-import': 0,
-      'n/no-unpublished-import': 0,
-      'prefer-const': 'warn',
     },
   },
 );

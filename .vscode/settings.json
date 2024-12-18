@@ -9,5 +9,11 @@
     "**/node_modules": false,
     "**/*.log": false
   },
-  "explorerExclude.backup": {}
+  "explorerExclude.backup": {},
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "eslint.options": {
+    "configFile": "/eslint.config.ts"
+  }
 }
