@@ -3,7 +3,7 @@ import AuthResolver from '@src/resolvers/auth/auth.resolver';
 import Paths from '../common/Paths';
 import { NextFunction, Request, Response, Router } from 'express';
 
-const authRrouter = Router();
+const authRrouter: Router = Router();
 
 authRrouter.post(
   Paths.Auth.register,

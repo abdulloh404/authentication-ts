@@ -13,6 +13,7 @@
     "node": ">=22.4.1"
   },
   "dependencies": {
+    "@types/sequelize": "^4.28.20",
     "bcryptjs": "^2.4.3",
     "cookie": "^1.0.2",
     "cookie-parser": "^1.4.7",

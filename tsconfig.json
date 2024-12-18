@@ -26,7 +26,8 @@
     "spec/**/*.ts",
     "config.ts",
     "scripts",
-    "eslint.config.ts"
+    "eslint.config.ts",
+    "migrations/**/*.ts"
   ],
   "exclude": ["src/public/*", "dist/*", "node_modules/*"]
 }
