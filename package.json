@@ -6,7 +6,7 @@
     "dev": "nx serve authentication-api",
     "watch": "nx run authentication-api:watch",
     "start": "node dist/apps/authentication-api/main.js",
-    "lint": "ts-node ./eslint.config.ts && eslint ."
+    "lint": "eslint ."
   },
   "engines": {
     "node": ">=22.4.1"
@@ -43,7 +43,6 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.17.0",
     "@nrwl/nx": "^7.8.7",
     "@nx/node": "^20.2.2",
@@ -66,6 +65,8 @@
     "@types/node": "^22.10.2",
     "@types/nodemailer": "^6.4.17",
     "@types/supertest": "^6.0.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "@typescript-eslint/parser": "^8.18.1",
     "eslint": "^9.17.0",
     "eslint-plugin-n": "^17.15.0",
     "find": "^0.3.0",
