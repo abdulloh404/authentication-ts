@@ -7,7 +7,10 @@
     "dev": "nx serve authentication-api",
     "watch": "nx run authentication-api:watch",
     "lint": "eslint src/**/*.ts",
-    "lint:fix": "eslint src/**/*.ts --fix"
+    "lint:fix": "eslint src/**/*.ts --fix",
+    "migrate": "ts-node ./node_modules/.bin/sequelize-cli db:migrate",
+    "migrate:undo": "ts-node ./node_modules/.bin/sequelize-cli db:migrate:undo",
+    "seed": "ts-node ./node_modules/.bin/sequelize-cli db:seed:all"
   },
   "engines": {
     "node": ">=22.4.1"
