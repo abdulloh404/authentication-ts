@@ -1,7 +1,7 @@
 import Env from '@src/common/Env';
 import logger from 'jet-logger';
 import server from './server';
-import { sequelize } from './config/database.config';
+import { sequelize } from '@config/database.config';
 
 const SERVER_START_MSG =
   'Express server started on port: ' + Env.Port.toString();

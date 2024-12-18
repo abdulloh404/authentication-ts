@@ -1,5 +1,5 @@
 import { Model, DataTypes, Optional } from 'sequelize';
-import sequelize from '@environment/environment'; // สมมติว่าคุณตั้งค่า Sequelize ไว้ใน `config/database.ts`
+import { sequelize } from '@config/database.config';
 
 // กำหนดประเภทของ Attributes สำหรับ Users
 interface UserAttributes {
