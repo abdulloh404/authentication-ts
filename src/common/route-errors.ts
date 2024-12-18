@@ -31,7 +31,7 @@ export class ValidationErr extends RouteError {
       parameter,
       value,
     };
-    if (!!moreInfo) {
+    if (moreInfo) {
       msgObj['more-info'] = moreInfo;
     }
     super(HttpStatusCodes.BAD_REQUEST, JSON.stringify(msgObj));

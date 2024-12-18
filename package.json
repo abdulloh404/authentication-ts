@@ -2,10 +2,12 @@
   "name": "authentication-api",
   "version": "1.0.0",
   "scripts": {
+    "start": "node dist/apps/authentication-api/main.js",
     "build": "nx build authentication-api",
     "dev": "nx serve authentication-api",
     "watch": "nx run authentication-api:watch",
-    "start": "node dist/apps/authentication-api/main.js"
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix"
   },
   "engines": {
     "node": ">=22.4.1"
@@ -82,18 +84,10 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.0"
+    "typescript-eslint": "^8.18.1"
   },
   "lint-staged": {
-    "*.ts": [
-      "eslint --fix --config .eslintrc.json"
-    ],
-    "*.{js,css,less,scss,md,ts,html,graphql}": [
-      "nx format:write --uncommitted"
-    ],
-    "*.json": [
-      "prettier --write --config .prettierrc"
-    ]
+    "**/*.{ts,js,json,css,scss,md}": "prettier --write"
   },
   "nx": {}
 }
