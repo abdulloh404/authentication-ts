@@ -8,13 +8,14 @@ class AuthResolver {
     next: NextFunction,
   ): Promise<any> {
     try {
-      const payload = req.body;
-      const dataRequest = {
+      const requestBody = req.body;
+      const requestData = {
         headers: req.headers,
         params: req.params,
         query: req.query,
       };
-      res.locals.payloadData = { payload, dataRequest };
+
+      res.locals.data = { requestBody, requestData };
 
       next();
     } catch (error) {

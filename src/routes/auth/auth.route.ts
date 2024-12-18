@@ -8,13 +8,11 @@ const authRrouter = Router();
 authRrouter.post(
   Paths.Auth.register,
   AuthResolver.middleware,
-  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  async (req: unknown, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const { payload, dataRequest } = res.locals.payloadData as {
-        payload: any;
-        dataRequest: any;
-      };
-      const response = await AuthController.register(payload, dataRequest);
+      const { requestBody, requestData } = res.locals.data;
+      const response = await AuthController.register(requestBody, requestData);
+
       res.status(response.status).json(response);
     } catch (error) {
       next(error);
