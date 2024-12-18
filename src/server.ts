@@ -28,14 +28,7 @@ app.use(bodyParser.json());
 app.use(apiLimiter, routes);
 app.use(cookieParser());
 app.use(Paths.Base, BaseRouter);
-
-
-// CSRF Protection
-app.use(
-  csrf({
-    cookie: true,
-  })
-);
+app.use(csrf({ cookie: true }));
 
 // Dev-specific middlewares
 if (Env.NodeEnv === NodeEnvs.Dev.valueOf()) {

@@ -1,6 +1,6 @@
 import AuthController from '@src/controller/auth/auth.controller';
-import { Router } from 'express';
 import Paths from '../common/Paths';
+import { Router } from 'express';
 
 const authRrouter = Router();
 
