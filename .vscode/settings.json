@@ -9,14 +9,5 @@
     "**/node_modules": false,
     "**/*.log": false
   },
-
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "always",
-    "source.fixAll.eslint": "always"
-  },
-  "eslint.format.enable": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "files.trimTrailingWhitespace": true,
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true
+  "explorerExclude.backup": {}
 }
