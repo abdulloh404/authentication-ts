@@ -1,7 +1,6 @@
-import { Request, Response } from 'express';
 import { registerUser } from '@src/services/auth/auth.service';
-import { validateUserResponse } from '@src/schema';
 import { HttpStatusCode } from 'axios';
+import { Request, Response } from 'express';
 
 class AuthResolver {
   async register(req: Request, res: Response): Promise<void> {

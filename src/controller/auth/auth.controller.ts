@@ -1,13 +1,14 @@
-import AuthResolver from '@src/resolvers/auth/auth.resolver';
 import HttpStatusCodes from '@src/common/HttpStatusCodes';
-import { loginUser } from './../../services/auth/auth.service';
-import { Request, Response } from 'express';
 import { validateRequest } from '@src/helpers/joi-validate.helper';
+import AuthResolver from '@src/resolvers/auth/auth.resolver';
 import {
-  validateRegisterRequest,
   validateLogin,
+  validateRegisterRequest,
   validateTokenResponse,
 } from '@src/schema/auth/auth.schema';
+import { Request, Response } from 'express';
+
+import { loginUser } from './../../services/auth/auth.service';
 
 class AuthController {
   async register(req: Request, res: Response): Promise<void> {
