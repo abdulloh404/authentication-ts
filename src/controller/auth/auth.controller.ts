@@ -2,7 +2,7 @@ import AuthResolver from '@src/resolvers/auth/auth.resolver';
 import HttpStatusCodes from '@src/common/HttpStatusCodes';
 import { loginUser } from './../../services/auth/auth.service';
 import { Request, Response } from 'express';
-import { validateRequest } from '@src/helpers/joi-validate.helper';
+import { joi } from '@src/helpers/joi-validate.helper';
 import {
   validateLogin,
   validateRegisterRequest,
@@ -11,16 +11,20 @@ import {
 
 class AuthController {
   async register(payload: any, dataRequest: any): Promise<any> {
-    const isValid = validateRequest(validateRegisterRequest, dataRequest);
-
+    const isValid = joi(validateRegisterRequest, dataRequest);
     if (!isValid) {
       console.log('Validation failed: Invalid dataRequest');
       return;
     }
     console.log(dataRequest);
-    console.log(payload);
+    // console.log(payload);
     // const response = await AuthResolver.register(payload, dataRequest);
-    const response = null;
+    const response = {
+      success: true,
+      status: 201,
+      data: dataRequest,
+    };
+
     return response;
   }
 

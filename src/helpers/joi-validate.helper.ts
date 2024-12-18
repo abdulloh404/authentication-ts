@@ -1,31 +1,21 @@
-import HttpStatusCodes from '@src/common/HttpStatusCodes';
-import { HttpStatusCode } from 'axios';
-import { Response } from 'express';
-import { Schema } from 'joi';
+import { ObjectSchema } from 'joi';
 
-export function validateRequest(schema: any, data: any): boolean {
+export function joi(schema: ObjectSchema, data: any): any {
   try {
-    schema.validateSync(data, { abortEarly: false });
-    return true;
-  } catch (error) {
-    console.error('Validation error:', error);
-    return false;
+    const { error } = schema.validate(data, { abortEarly: false });
+    if (error) {
+      const errors = error.details.map(detail => ({
+        key: detail.path.join('.'), // ระบุ path หรือ key ของฟิลด์ที่ผิด
+        message: detail.message, // ข้อความแสดงข้อผิดพลาด
+      }));
+      return { isValid: false, errors };
+    }
+    return { isValid: true, errors: [] };
+  } catch (err) {
+    console.error('Unexpected validation error:', err);
+    return {
+      isValid: false,
+      errors: [{ key: 'unknown', message: 'Unexpected validation error' }],
+    };
   }
 }
-
-export const validateResponse = (
-  schema: Schema,
-  data: any,
-  res: Response,
-): boolean => {
-  const { error } = schema.validate(data);
-
-  if (error) {
-    res
-      .status(HttpStatusCodes.BAD_REQUEST)
-      .json({ error: error.details[0].message });
-    return false;
-  }
-
-  return true;
-};
