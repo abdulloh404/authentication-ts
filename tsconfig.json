@@ -29,7 +29,7 @@
     "config.ts",
     "scripts",
     "eslint.config.ts",
-    "migrations/**/*.ts"
+    "migrations/*.js"
   ],
   "exclude": ["src/public/*", "dist/*", "node_modules/*"]
 }
