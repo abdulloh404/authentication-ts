@@ -1,7 +1,6 @@
-import { Model, DataTypes, Optional } from 'sequelize';
+import { DataTypes, Model, Optional } from 'sequelize';
 import { sequelize } from '@config/database.config';
 
-// กำหนดประเภทของ Attributes สำหรับ Users
 interface UserAttributes {
   id: number;
   firstName: string;
@@ -22,7 +21,6 @@ interface UserAttributes {
   updatedAt?: Date;
 }
 
-// กำหนด Optional Attributes (Attributes ที่อาจไม่มี)
 interface UserCreationAttributes
   extends Optional<
     UserAttributes,
@@ -38,7 +36,6 @@ interface UserCreationAttributes
     | 'updatedAt'
   > {}
 
-// สร้าง Model
 class User
   extends Model<UserAttributes, UserCreationAttributes>
   implements UserAttributes
