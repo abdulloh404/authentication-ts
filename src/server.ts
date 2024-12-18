@@ -1,6 +1,7 @@
 import BaseRouter from '@src/routes';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
+import csrf from 'csurf';
 import Env from '@src/common/Env';
 import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
@@ -27,20 +28,26 @@ app.use(bodyParser.json());
 app.use(apiLimiter, routes);
 app.use(cookieParser());
 app.use(Paths.Base, BaseRouter);
-// app.use(
-//   csrf({
-//     cookie: true,
-//   })dsadsa
-// );
 
+
+// CSRF Protection
+app.use(
+  csrf({
+    cookie: true,
+  })
+);
+
+// Dev-specific middlewares
 if (Env.NodeEnv === NodeEnvs.Dev.valueOf()) {
   app.use(morganConfig);
 }
 
+// Production-specific middlewares
 if (Env.NodeEnv === NodeEnvs.Production.valueOf()) {
   app.use(helmet());
 }
 
+// Error handler
 app.use((err: Error, _: Request, res: Response, next: NextFunction) => {
   if (Env.NodeEnv !== NodeEnvs.Test.valueOf()) {
     logger.err(err, true);
