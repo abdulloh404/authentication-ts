@@ -86,7 +86,15 @@
     "typescript-eslint": "^8.18.0"
   },
   "lint-staged": {
-    "**/*.{ts,js,json,css,scss,md}": "prettier --write"
+    "*.ts": [
+      "eslint --fix --config .eslintrc.json"
+    ],
+    "*.{js,css,less,scss,md,ts,html,graphql}": [
+      "nx format:write --uncommitted"
+    ],
+    "*.json": [
+      "prettier --write --config .prettierrc"
+    ]
   },
   "nx": {}
 }
