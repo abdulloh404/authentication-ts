@@ -9,10 +9,5 @@
     "**/node_modules": false,
     "**/*.log": false
   },
-  "explorerExclude.backup": {},
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "always"
-  },
-  "eslint.validate": ["javascript", "typescript"],
-  "eslint.workingDirectories": ["./"]
+  "explorerExclude.backup": {}
 }

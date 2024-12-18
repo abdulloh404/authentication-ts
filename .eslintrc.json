@@ -23,7 +23,17 @@
     "@typescript-eslint/no-misused-promises": 0,
     "@typescript-eslint/no-floating-promises": 0,
     "@typescript-eslint/no-confusing-void-expression": 0,
-    "@typescript-eslint/no-unnecessary-condition": 0,
+    "@typescript-eslint/no-unnecessary-condition": "error",
+    "@typescript-eslint/strict-boolean-expressions": [
+      "error",
+      {
+        "allowNullableObject": false,
+        "allowNullableBoolean": false,
+        "allowNullableString": false,
+        "allowNullableNumber": false,
+        "allowAny": false
+      }
+    ],
     "@typescript-eslint/restrict-template-expressions": [
       "error",
       { "allowNumber": true }
