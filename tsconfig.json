@@ -13,7 +13,8 @@
       "@src/*": ["src/*"],
       "@route/*": ["src/routes/*"],
       "@service/*": ["src/services/*"],
-      "@controller/*": ["src/controller/*"]
+      "@controller/*": ["src/controller/*"],
+      "@environment/*": ["src/environment/*"]
     },
     "useUnknownInCatchVariables": false
   },

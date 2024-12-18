@@ -1,24 +1,28 @@
-import { DataTypes, Model, Optional } from 'sequelize';
-import { sequelize } from '../config/database.config';
+import { Model, DataTypes, Optional } from 'sequelize';
+import sequelize from '@environment/environment'; // สมมติว่าคุณตั้งค่า Sequelize ไว้ใน `config/database.ts`
 
+// กำหนดประเภทของ Attributes สำหรับ Users
 interface UserAttributes {
   id: number;
   firstName: string;
   lastName: string;
   email: string;
-  emailVerifiedAt: 'line' | 'facebook' | 'gmail' | 'google' | null;
+  emailVerifiedAt?: 'line' | 'facebook' | 'gmail' | 'google';
   isVerify: number;
   password: string;
   role: 'user' | 'admin';
   loginBy: 'regular' | 'facebook' | 'line' | 'google';
-  lineId: string | null;
-  facebookId: string | null;
-  googleId: string | null;
-  rememberToken: string | null;
-  createdAt: Date;
-  updatedAt: Date;
+  lineId?: string;
+  facebookId?: string;
+  googleId?: string;
+  accessToken?: string;
+  refreshToken?: string;
+  tokenExpiry?: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
+// กำหนด Optional Attributes (Attributes ที่อาจไม่มี)
 interface UserCreationAttributes
   extends Optional<
     UserAttributes,
@@ -27,9 +31,14 @@ interface UserCreationAttributes
     | 'lineId'
     | 'facebookId'
     | 'googleId'
-    | 'rememberToken'
+    | 'accessToken'
+    | 'refreshToken'
+    | 'tokenExpiry'
+    | 'createdAt'
+    | 'updatedAt'
   > {}
 
+// สร้าง Model
 class User
   extends Model<UserAttributes, UserCreationAttributes>
   implements UserAttributes
@@ -38,20 +47,22 @@ class User
   public firstName!: string;
   public lastName!: string;
   public email!: string;
-  public emailVerifiedAt!: 'line' | 'facebook' | 'gmail' | 'google' | null;
+  public emailVerifiedAt?: 'line' | 'facebook' | 'gmail' | 'google';
   public isVerify!: number;
   public password!: string;
   public role!: 'user' | 'admin';
   public loginBy!: 'regular' | 'facebook' | 'line' | 'google';
-  public lineId!: string | null;
-  public facebookId!: string | null;
-  public googleId!: string | null;
-  public rememberToken!: string | null;
-
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  public lineId?: string;
+  public facebookId?: string;
+  public googleId?: string;
+  public accessToken?: string;
+  public refreshToken?: string;
+  public tokenExpiry?: Date;
+  public createdAt?: Date;
+  public updatedAt?: Date;
 }
 
+// กำหนด Schema
 User.init(
   {
     id: {
@@ -108,8 +119,16 @@ User.init(
       type: DataTypes.STRING(255),
       allowNull: true,
     },
-    rememberToken: {
+    accessToken: {
       type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    refreshToken: {
+      type: DataTypes.STRING(255),
+      allowNull: true,
+    },
+    tokenExpiry: {
+      type: DataTypes.DATE,
       allowNull: true,
     },
     createdAt: {
@@ -120,6 +139,7 @@ User.init(
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: true,
+      defaultValue: DataTypes.NOW,
     },
   },
   {
@@ -129,4 +149,4 @@ User.init(
   },
 );
 
-export { User };
+export default User;
