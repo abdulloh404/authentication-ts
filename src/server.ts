@@ -20,15 +20,13 @@ const app = express();
 
 // Basic middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(helmet());
-app.use(express.json());
 app.use(corsConfig);
 app.use(bodyParser.json());
 app.use(apiLimiter, routes);
 app.use(cookieParser());
 app.use(Paths.Base, BaseRouter);
 app.use(csrf({ cookie: true }));
+// app.use(express.urlencoded({ extended: true }));
 
 // Dev-specific middlewares
 if (Env.NodeEnv === NodeEnvs.Dev.valueOf()) {
