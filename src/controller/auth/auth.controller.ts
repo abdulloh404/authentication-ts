@@ -5,18 +5,15 @@ import { joi } from '@src/helpers/joi-validate.helper';
 import { validateRegisterRequest } from '@src/schema/auth/auth.schema';
 
 class AuthController {
-  async register(
-    requestBody: any,
-    requestData: unknown,
-  ): Promise<HttpResponse> {
-    const isValid = joi(validateRegisterRequest, requestBody);
+  async register(header: unknown, params: any): Promise<HttpResponse> {
+    const isValid = joi(validateRegisterRequest, params);
     if (!isValid) {
       return {
         status: HttpStatusCodes.BAD_REQUEST,
         message: 'Your data is not valid',
       };
     }
-    const response = await AuthService.register(requestBody);
+    const response = await AuthService.register(params);
     if (response.status) {
       const successResponse: HttpResponse = {
         status: HttpStatusCodes.CREATED,

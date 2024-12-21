@@ -1,22 +1,11 @@
 import AuthController from '@src/controller/auth/auth.controller';
-import AuthResolver from '@src/resolvers/auth/auth.resolver';
 import Paths from '../common/Paths';
 import { NextFunction, Request, Response, Router } from 'express';
+import { HttpResponse } from '@src/common/HttpResponse';
+import { async } from '@src/handler/async.handler';
 
 const authRrouter: Router = Router();
 
-authRrouter.post(
-  Paths.Auth.register,
-  AuthResolver.middleware,
-  async (req: unknown, res: Response, next: NextFunction): Promise<any> => {
-    try {
-      const { requestBody, requestData } = res.locals.data;
-      const response = await AuthController.register(requestBody, requestData);
-      res.status(response.status).json(response);
-    } catch (error) {
-      next(error);
-    }
-  },
-);
+authRrouter.post(Paths.Auth.register, async(AuthController.register));
 
 export default authRrouter;
