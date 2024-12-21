@@ -1,8 +1,7 @@
 import AuthController from '@src/controller/auth/auth.controller';
 import Paths from '../common/Paths';
-import { NextFunction, Request, Response, Router } from 'express';
-import { HttpResponse } from '@src/common/HttpResponse';
 import { async } from '@src/handler/async.handler';
+import { Router } from 'express';
 
 const authRrouter: Router = Router();
 
