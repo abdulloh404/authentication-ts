@@ -58,6 +58,7 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/cookie": "^0.6.0",
     "@types/cookie-parser": "^1.4.8",
+    "@types/cors": "^2.8.17",
     "@types/csurf": "^1.11.5",
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^5.0.0",
