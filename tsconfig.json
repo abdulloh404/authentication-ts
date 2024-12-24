@@ -4,7 +4,7 @@
     "module": "CommonJS",
     "outDir": "./dist",
     "lib": ["ES2022"],
-    "baseUrl": "./",
+    "baseUrl": ".",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -46,10 +46,10 @@
   "include": [
     "src/**/*.ts",
     "spec/**/*.ts",
-    "config.ts",
+    "config.ts/*",
     "scripts",
     "eslint.config.ts",
-    "migrations/**/*.ts"
+    "migrations/*.js"
   ],
   "exclude": ["src/public/*", "dist/*", "node_modules/*"]
 }

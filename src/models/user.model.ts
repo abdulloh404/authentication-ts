@@ -3,37 +3,33 @@ import { sequelize } from '@config/database.config';
 
 interface UserAttributes {
   id: number;
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   email: string;
-  emailVerifiedAt?: 'line' | 'facebook' | 'gmail' | 'google';
-  isVerify: number;
+  email_verified_at?: 'line' | 'facebook' | 'gmail' | 'google';
+  is_verify: number;
   password: string;
   role: 'user' | 'admin';
-  loginBy: 'regular' | 'facebook' | 'line' | 'google';
-  lineId?: string;
-  facebookId?: string;
-  googleId?: string;
-  accessToken?: string;
-  refreshToken?: string;
-  tokenExpiry?: Date;
-  createdAt?: Date;
-  updatedAt?: Date;
+  login_by: 'regular' | 'facebook' | 'line' | 'google';
+  remember_token?: string | null;
+  line_id?: string;
+  facebook_id?: string;
+  google_id?: string;
+  created_at?: Date;
+  updated_at?: Date;
 }
 
 interface UserCreationAttributes
   extends Optional<
     UserAttributes,
     | 'id'
-    | 'emailVerifiedAt'
-    | 'lineId'
-    | 'facebookId'
-    | 'googleId'
-    | 'accessToken'
-    | 'refreshToken'
-    | 'tokenExpiry'
-    | 'createdAt'
-    | 'updatedAt'
+    | 'email_verified_at'
+    | 'line_id'
+    | 'facebook_id'
+    | 'google_id'
+    | 'created_at'
+    | 'updated_at'
+    | 'remember_token'
   > {}
 
 class User
@@ -41,25 +37,21 @@ class User
   implements UserAttributes
 {
   public id!: number;
-  public firstName!: string;
-  public lastName!: string;
+  public first_name!: string;
+  public last_name!: string;
   public email!: string;
-  public emailVerifiedAt?: 'line' | 'facebook' | 'gmail' | 'google';
-  public isVerify!: number;
+  public email_verified_at?: 'line' | 'facebook' | 'gmail' | 'google';
+  public is_verify!: number;
   public password!: string;
   public role!: 'user' | 'admin';
-  public loginBy!: 'regular' | 'facebook' | 'line' | 'google';
-  public lineId?: string;
-  public facebookId?: string;
-  public googleId?: string;
-  public accessToken?: string;
-  public refreshToken?: string;
-  public tokenExpiry?: Date;
-  public createdAt?: Date;
-  public updatedAt?: Date;
+  public login_by!: 'regular' | 'facebook' | 'line' | 'google';
+  public line_id?: string;
+  public facebook_id?: string;
+  public google_id?: string;
+  public created_at?: Date;
+  public updated_at?: Date;
 }
 
-// กำหนด Schema
 User.init(
   {
     id: {
@@ -67,73 +59,64 @@ User.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    firstName: {
+    first_name: {
       type: DataTypes.CHAR(40),
       allowNull: false,
     },
-    lastName: {
+    last_name: {
       type: DataTypes.CHAR(40),
       allowNull: false,
     },
     email: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(164),
       allowNull: false,
       unique: true,
     },
-    emailVerifiedAt: {
+    email_verified_at: {
       type: DataTypes.ENUM('line', 'facebook', 'gmail', 'google'),
       allowNull: true,
     },
-    isVerify: {
+    is_verify: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,
     },
     password: {
-      type: DataTypes.STRING(255),
+      type: DataTypes.STRING(132),
       allowNull: false,
-      defaultValue: 'false',
     },
     role: {
       type: DataTypes.ENUM('user', 'admin'),
       allowNull: false,
       defaultValue: 'user',
     },
-    loginBy: {
+    remember_token: {
+      type: DataTypes.STRING(132),
+      allowNull: true,
+    },
+    login_by: {
       type: DataTypes.ENUM('regular', 'facebook', 'line', 'google'),
       allowNull: false,
       defaultValue: 'regular',
     },
-    lineId: {
-      type: DataTypes.STRING(255),
+    line_id: {
+      type: DataTypes.STRING(132),
       allowNull: true,
     },
-    facebookId: {
-      type: DataTypes.STRING(255),
+    facebook_id: {
+      type: DataTypes.STRING(132),
       allowNull: true,
     },
-    googleId: {
-      type: DataTypes.STRING(255),
+    google_id: {
+      type: DataTypes.STRING(132),
       allowNull: true,
     },
-    accessToken: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    refreshToken: {
-      type: DataTypes.STRING(255),
-      allowNull: true,
-    },
-    tokenExpiry: {
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
-    createdAt: {
+    created_at: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    updatedAt: {
+    updated_at: {
       type: DataTypes.DATE,
       allowNull: true,
       defaultValue: DataTypes.NOW,

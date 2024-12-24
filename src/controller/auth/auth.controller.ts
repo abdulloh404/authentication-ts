@@ -1,62 +1,35 @@
+import AuthService from '@service/auth/auth.service';
+import { HttpResponse } from '@src/common/HttpResponse';
 import HttpStatusCodes from '@src/common/HttpStatusCodes';
 import { joi } from '@src/helpers/joi-validate.helper';
-import { loginUser } from './../../services/auth/auth.service';
-import { Request, Response } from 'express';
-import {
-  validateLogin,
-  validateRegisterRequest,
-  validateTokenResponse,
-} from '@src/schema/auth/auth.schema';
+import { validateRegisterRequest } from '@src/schema/auth/auth.schema';
 
 class AuthController {
-  async register(payload: any, dataRequest: any): Promise<any> {
-    const isValid = joi(validateRegisterRequest, dataRequest);
+  async register(header: unknown, params: any): Promise<HttpResponse> {
+    const isValid = joi(validateRegisterRequest, params);
     if (!isValid) {
-      console.log('Validation failed: Invalid dataRequest');
-      return;
+      return {
+        status: HttpStatusCodes.BAD_REQUEST,
+        message: 'Your data is not valid',
+      };
     }
-    // console.log(dataRequest);
-    console.log(payload);
-    // const response = await AuthResolver.register(payload, dataRequest);
-    const response = {
-      success: true,
-      status: 201,
-      data: payload,
-    };
+    const response = await AuthService.register(params);
+    if (response.status) {
+      const successResponse: HttpResponse = {
+        status: HttpStatusCodes.CREATED,
+        message: 'User registered successfully',
+        response: response.response,
+      };
 
-    return response;
-  }
+      return successResponse;
+    } else {
+      const errorResponse: HttpResponse = {
+        status: HttpStatusCodes.INTERNAL_SERVER_ERROR,
+        message: 'User registered successfully',
+        errors: [response.message],
+      };
 
-  async login(req: Request, res: Response): Promise<void> {
-    try {
-      const { error: requestError } = validateLogin(req.body);
-      if (requestError) {
-        res
-          .status(HttpStatusCodes.OK)
-          .json({
-            error:
-              requestError?.details && requestError.details.length > 0
-                ? requestError.details[0]?.message
-                : 'Invalid request',
-          });
-        return;
-      }
-
-      const { username, password } = req.body;
-      const token = await loginUser(username, password);
-
-      const { error: responseError } = validateTokenResponse({ token });
-      if (responseError) {
-        res.status(500).json({ error: 'Internal Server Error' });
-        return;
-      }
-
-      res.status(200).json({ token });
-    } catch (error) {
-      res.status(400).json({
-        error:
-          error instanceof Error ? error.message : 'An unknown error occurred',
-      });
+      return errorResponse;
     }
   }
 }
