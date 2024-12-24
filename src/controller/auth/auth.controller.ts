@@ -1,8 +1,7 @@
-import AuthResolver from '@src/resolvers/auth/auth.resolver';
 import HttpStatusCodes from '@src/common/HttpStatusCodes';
+import { joi } from '@src/helpers/joi-validate.helper';
 import { loginUser } from './../../services/auth/auth.service';
 import { Request, Response } from 'express';
-import { joi } from '@src/helpers/joi-validate.helper';
 import {
   validateLogin,
   validateRegisterRequest,
@@ -34,7 +33,12 @@ class AuthController {
       if (requestError) {
         res
           .status(HttpStatusCodes.OK)
-          .json({ error: requestError.details[0].message });
+          .json({
+            error:
+              requestError?.details && requestError.details.length > 0
+                ? requestError.details[0]?.message
+                : 'Invalid request',
+          });
         return;
       }
 
