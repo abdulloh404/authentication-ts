@@ -7,7 +7,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "eslint.config.ts",
+    "eslint.config.cjs",
     "migrations/*.js",
     "jest.config.ts"
   ],
