@@ -48,14 +48,7 @@
     "require": ["tsconfig-paths/register", "./config.ts"]
   },
   "files": [],
-  "include": [
-    "src/**/*.ts",
-    "spec/**/*.ts",
-    "config.ts/*",
-    "scripts",
-    "eslint.config.ts",
-    "migrations/*.js"
-  ],
+  "include": [],
   "references": [
     {
       "path": "./tsconfig.app.json"

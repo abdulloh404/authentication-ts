@@ -5,6 +5,13 @@
     "module": "commonjs",
     "types": ["node"]
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "spec/**/*.ts",
+    "config.ts/*",
+    "scripts",
+    "eslint.config.ts",
+    "migrations/*.js"
+  ],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }
