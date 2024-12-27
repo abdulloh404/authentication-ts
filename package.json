@@ -6,7 +6,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "lint": "eslint --config ./eslint.config.ts --ext .ts src",
+    "lint": "eslint",
     "lint:fix": "eslint src/**/*.ts --fix",
     "migrate": "ts-node ./node_modules/.bin/sequelize-cli db:migrate",
     "migrate:undo": "ts-node ./node_modules/.bin/sequelize-cli db:migrate:undo",
