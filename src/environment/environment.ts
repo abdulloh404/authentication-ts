@@ -1,4 +1,3 @@
-/* eslint-disable n/no-process-env */
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -11,7 +10,7 @@ export const config = {
     user: process.env['MYSQL_USER'],
     password: process.env['MYSQL_PASSWORD'],
     database: process.env['MYSQL_DATABASE'],
-    port: process.env['MYSQL_PORT'],
+    port: Number(process.env['MYSQL_PORT']) || 3306,
   },
   emailService: process.env['EMAIL_SERVICE'],
   emailUser: process.env['EMAIL_USER'],

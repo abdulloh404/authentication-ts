@@ -53,5 +53,5 @@
       "path": "./tsconfig.spec.json"
     }
   ],
-  "exclude": ["src/public/*", "dist/*", "node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp"]
 }

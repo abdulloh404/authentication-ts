@@ -2,14 +2,16 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
-    "module": "commonjs",
+    "module": "CommonJS",
     "types": ["node"]
   },
   "include": [
+    "src/*.ts",
     "src/**/*.ts",
     "eslint.config.cjs",
     "migrations/*.js",
-    "jest.config.ts"
+    "jest.config.ts",
+    "config.ts"
   ],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }

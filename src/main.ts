@@ -3,12 +3,8 @@ import logger from 'jet-logger';
 import server from './server';
 import { sequelize } from '@config/database.config';
 
-const SERVER_START_MSG =
-  'Express server started on port: ' + Env.Port.toString();
-
-const SERVER_START_MY_SQL =
-  'Database connected succesfully started with port :' +
-  process.env['MYSQL_PORT'];
+const SERVER_START_MSG = `Express server started on port: ${process.env['PORT']}`;
+const SERVER_START_MY_SQL = `Database connected successfully on port: ${process.env['MYSQL_PORT']}`;
 
 (async () => {
   try {
