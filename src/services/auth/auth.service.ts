@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import User from '@src/models/user.model';
 
 class AuthService {
-  async register(requestBody: any): Promise<any> {
+  public async register(requestBody: any): Promise<any> {
     try {
       const {
         first_name,
@@ -14,7 +14,7 @@ class AuthService {
       } = requestBody;
 
       const existingUser = await User.findOne({ where: { email } });
-      if (existingUser) {
+      if (existingUser != null) {
         return {
           success: false,
           message: 'Email is already in use.',
@@ -44,10 +44,10 @@ class AuthService {
           login_by: user.login_by,
         },
       };
-    } catch (error: any) {
+    } catch (error: unknown) {
       return {
         success: false,
-        message: error.message,
+        message: (error as Error).message,
       };
     }
   }

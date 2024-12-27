@@ -19,18 +19,17 @@ interface UserAttributes {
   updated_at?: Date;
 }
 
-interface UserCreationAttributes
-  extends Optional<
-    UserAttributes,
-    | 'id'
-    | 'email_verified_at'
-    | 'line_id'
-    | 'facebook_id'
-    | 'google_id'
-    | 'created_at'
-    | 'updated_at'
-    | 'remember_token'
-  > {}
+type UserCreationAttributes = Optional<
+  UserAttributes,
+  | 'id'
+  | 'email_verified_at'
+  | 'line_id'
+  | 'facebook_id'
+  | 'google_id'
+  | 'created_at'
+  | 'updated_at'
+  | 'remember_token'
+>;
 
 class User
   extends Model<UserAttributes, UserCreationAttributes>

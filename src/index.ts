@@ -20,6 +20,7 @@ const SERVER_START_MY_SQL =
     });
   } catch (error) {
     console.error('Unable to connect to the database:', error);
+    // eslint-disable-next-line n/no-process-exit
     process.exit(1);
   }
 })();
