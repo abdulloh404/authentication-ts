@@ -1,4 +1,3 @@
-/* eslint-disable n/no-process-env */
 import Env from '@src/common/Env';
 import logger from 'jet-logger';
 import server from './server';

@@ -89,6 +89,8 @@ export default [
       ],
       '@typescript-eslint/no-non-null-assertion': 0,
       '@typescript-eslint/no-unused-expressions': 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-unsafe-assignment': 0,
       'comma-dangle': ['warn', 'always-multiline'],
       'no-console': 1,
       'no-extra-boolean-cast': 0,
