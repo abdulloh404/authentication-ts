@@ -5,7 +5,7 @@ import { ParamsDictionary } from 'express-serve-static-core';
 import { IncomingHttpHeaders } from 'http';
 import QueryString from 'qs';
 
-interface AsyncHandler {
+interface IAsyncHandler {
   headers: IncomingHttpHeaders;
   params: ParamsDictionary;
   query: QueryString.ParsedQs;
@@ -18,7 +18,7 @@ export const async =
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const requestBody = req.body;
-      const requestData: AsyncHandler = {
+      const requestData: IAsyncHandler = {
         headers: req.headers,
         params: req.params,
         query: req.query,
