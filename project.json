@@ -1,21 +1,69 @@
 {
-  "name": "authentication-ts",
+  "name": "authentication-api",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "includedScripts": [],
+  "sourceRoot": "src",
+  "projectType": "application",
+  "tags": [],
   "targets": {
-    "serve": {
-      "executor": "nx:run-commands",
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
-        "command": "nodemon --quiet --watch src --ext ts,js,json --exec ts-node ./src/index.ts",
-        "cwd": "."
+        "platform": "node",
+        "outputPath": "dist/authentication-api",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "src/main.ts",
+        "tsConfig": "tsconfig.app.json",
+        "assets": ["src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "generateLockfile": true,
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
       }
     },
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
       "options": {
-        "outputPath": "dist/",
-        "main": "./src/index.ts",
-        "tsConfig": "./tsconfig.json"
+        "buildTarget": "authentication-api:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "authentication-api:build:development"
+        },
+        "production": {
+          "buildTarget": "authentication-api:build:production"
+        }
       }
+    },
+    "test": {
+      "options": {
+        "passWithNoTests": true
+      }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f Dockerfile . -t authentication-api"
     }
   }
 }

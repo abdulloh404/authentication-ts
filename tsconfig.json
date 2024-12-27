@@ -1,53 +1,30 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "CommonJS",
-    "outDir": "./dist",
-    "lib": ["ES2022"],
-    "baseUrl": ".",
-    "esModuleInterop": true,
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "paths": {
-      "@src/*": ["src/*"],
-      "@route/*": ["src/routes/*"],
-      "@service/*": ["src/services/*"],
-      "@config/*": ["src/config/*"],
-      "@controller/*": ["src/controller/*"],
-      "@environment/*": ["src/environment/*"]
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {},
+    "esModuleInterop": true
+  },
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
     },
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "strictBuiltinIteratorReturn": true,
-    "noImplicitThis": true,
-    "useUnknownInCatchVariables": true,
-    "alwaysStrict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "exactOptionalPropertyTypes": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "allowUnusedLabels": true,
-    "allowUnreachableCode": true
-  },
-  "ts-node": {
-    "swc": true,
-    "require": ["tsconfig-paths/register", "./config.ts"]
-  },
-  "include": [
-    "src/**/*.ts",
-    "spec/**/*.ts",
-    "config.ts/*",
-    "scripts",
-    "eslint.config.ts",
-    "migrations/*.js"
+    {
+      "path": "./tsconfig.spec.json"
+    }
   ],
-  "exclude": ["src/public/*", "dist/*", "node_modules/*"]
+  "exclude": ["node_modules", "tmp"]
 }
