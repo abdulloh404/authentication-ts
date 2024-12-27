@@ -33,7 +33,7 @@ if (Env.NodeEnv === NodeEnvs.Production.valueOf()) {
 }
 
 // Error handler
-app.use((err: Error, _: Request, res: Response) => {
+app.use((err: Error, _req: Request, res: Response) => {
   if (Env.NodeEnv !== NodeEnvs.Test) {
     logger.err(err, true);
   }
