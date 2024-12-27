@@ -1,9 +1,9 @@
-const nx = require('@nx/eslint-plugin');
+import { configs } from '@nx/eslint-plugin';
 
-module.exports = [
-  ...nx.configs['flat/base'],
-  ...nx.configs['flat/typescript'],
-  ...nx.configs['flat/javascript'],
+export default [
+  ...configs['flat/base'],
+  ...configs['flat/typescript'],
+  ...configs['flat/javascript'],
   {
     ignores: ['**/dist'],
   },
