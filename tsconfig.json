@@ -43,10 +43,6 @@
     "allowUnreachableCode": true,
     "esModuleInterop": true
   },
-  "ts-node": {
-    "swc": true,
-    "require": ["tsconfig-paths/register", "./config.ts"]
-  },
   "files": [],
   "include": [],
   "references": [
