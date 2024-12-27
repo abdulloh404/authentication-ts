@@ -10,7 +10,7 @@ export const config = {
     user: process.env['MYSQL_USER'],
     password: process.env['MYSQL_PASSWORD'],
     database: process.env['MYSQL_DATABASE'],
-    port: Number(process.env['MYSQL_PORT']) || 3306,
+    port: process.env['MYSQL_PORT'],
   },
   emailService: process.env['EMAIL_SERVICE'],
   emailUser: process.env['EMAIL_USER'],
