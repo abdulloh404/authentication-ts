@@ -1,12 +1,12 @@
 #!/bin/bash
 
 start_dev() {
-  if pgrep -f "nx serve authentication-api" > /dev/null; then
-    pkill -f "nx serve authentication-api"
+  if pgrep -f "npm run dev" > /dev/null; then
+    pkill -f "npm run dev"
     sleep 2
   fi
 
-  npx nx serve authentication-api &
+  npx npm run dev &
   DEV_PID=$! 
   echo "NX development server started with PID $DEV_PID"
   sleep 5 
@@ -14,8 +14,8 @@ start_dev() {
 }
 
 stop_dev() {
-  if pgrep -f "nx serve authentication-api" > /dev/null; then
-    pkill -f "nx serve authentication-api"
+  if pgrep -f "npm run dev" > /dev/null; then
+    pkill -f "npm run dev"
   else
     echo "No running process found."
   fi

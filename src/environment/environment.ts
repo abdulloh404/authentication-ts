@@ -2,19 +2,17 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const config = {
-  port: process.env.PORT,
-  host: process.env.HOST,
-  jwtSecret:
-    process.env.JWT_SECRET ||
-    '2Z8Oh2JievFDxTvuJQeWyLzV+3AH35pS9wW88H4fCcpzpQH58eMLlCtc8my854znOQ9xm2SqM4by47bODNIW3A',
+  port: process.env['PORT'],
+  host: process.env['HOST'],
+  jwtSecret: process.env['JWT_SECRET'],
   mysql: {
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
-    port: process.env.MYSQL_PORT,
+    host: process.env['MYSQL_HOST'],
+    user: process.env['MYSQL_USER'],
+    password: process.env['MYSQL_PASSWORD'],
+    database: process.env['MYSQL_DATABASE'],
+    port: process.env['MYSQL_PORT'],
   },
-  emailService: process.env.EMAIL_SERVICE,
-  emailUser: process.env.EMAIL_USER,
-  emailPass: process.env.EMAIL_PASS,
+  emailService: process.env['EMAIL_SERVICE'],
+  emailUser: process.env['EMAIL_USER'],
+  emailPass: process.env['EMAIL_PASS'],
 };
