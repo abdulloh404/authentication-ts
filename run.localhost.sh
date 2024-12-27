@@ -1,12 +1,12 @@
 #!/bin/bash
 
 start_dev() {
-  if pgrep -f "npm run dev" > /dev/null; then
-    pkill -f "npm run dev"
+  if pgrep -f "npx npm run start" > /dev/null; then
+    pkill -f "npx npm run start"
     sleep 2
   fi
 
-  npx npm run dev &
+  npx npm run start &
   DEV_PID=$! 
   echo "NX development server started with PID $DEV_PID"
   sleep 5 
@@ -14,8 +14,8 @@ start_dev() {
 }
 
 stop_dev() {
-  if pgrep -f "npm run dev" > /dev/null; then
-    pkill -f "npm run dev"
+  if pgrep -f "npx npm run start" > /dev/null; then
+    pkill -f "npx npm run start"
   else
     echo "No running process found."
   fi
