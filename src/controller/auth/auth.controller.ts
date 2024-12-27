@@ -6,7 +6,7 @@ import User from '@src/models/user.model';
 import { validateRegisterRequest } from '@src/schema/auth/auth.schema';
 
 class AuthController {
-  async register(params: User): Promise<HttpResponse> {
+  public async register(params: User): Promise<any> {
     const isValid = joi(validateRegisterRequest, params);
     if (!isValid) {
       return {
