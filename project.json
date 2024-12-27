@@ -4,8 +4,8 @@
     "serve": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "nx serve authentication-ts --ssl --ssl-key environments/certificate/localhost.com-key.pem --ssl-cert environments/certificate/localhost.com.pem --host localhost.com --port 4000",
-        "parallel": false
+        "command": "nodemon --quiet --watch src --ext ts,js,json --exec ts-node ./src/index.ts",
+        "cwd": "."
       }
     },
     "build": {

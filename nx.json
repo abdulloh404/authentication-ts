@@ -6,6 +6,10 @@
       "cache": true
     },
     "serve": {
+      "inputs": ["default", "{projectRoot}/**/*"],
+      "options": {
+        "watch": true
+      },
       "cache": false
     },
     "test": {

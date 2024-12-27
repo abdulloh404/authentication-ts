@@ -15,11 +15,11 @@ export const authenticate = (
   try {
     const decoded = jwt.verify(
       token,
-      process.env.JWT_SECRET || '',
+      process.env['JWT_SECRET'] || '',
     ) as JwtPayload;
 
     if (decoded && typeof decoded === 'object' && 'id' in decoded) {
-      req.body.userId = decoded.id;
+      req.body.userId = decoded['id'];
       next();
     } else {
       return res.status(403).json({ error: 'Invalid token payload' });
