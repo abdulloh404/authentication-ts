@@ -1,3 +1,4 @@
+/* eslint-disable n/no-process-env */
 import Env from '@src/common/Env';
 import logger from 'jet-logger';
 import server from './server';
@@ -20,7 +21,5 @@ const SERVER_START_MY_SQL =
     });
   } catch (error) {
     console.error('Unable to connect to the database:', error);
-    // eslint-disable-next-line n/no-process-exit
-    process.exit(1);
   }
 })();

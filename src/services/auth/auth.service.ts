@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import User from '@src/models/user.model';
 
 class AuthService {
-  public async register(requestBody: any): Promise<any> {
+  public async register(requestBody: User): Promise<any> {
     try {
       const {
         first_name,
@@ -11,7 +11,7 @@ class AuthService {
         password,
         role = 'user',
         login_by = 'regular',
-      } = requestBody;
+      } = requestBody as User;
 
       const existingUser = await User.findOne({ where: { email } });
       if (existingUser != null) {

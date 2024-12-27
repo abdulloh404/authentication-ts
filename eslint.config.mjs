@@ -21,7 +21,8 @@ export default [
     ignores: ['**/node_modules/*', '**/*.mjs', '**/*.js'],
   },
   ...compat.extends(
-    'eslint:recommended',
+    // 'eslint:recommended',
+    // 'plugin:@typescript-eslint/strict-type-checked',
     'plugin:@typescript-eslint/stylistic',
     'plugin:n/recommended-script',
   ),
