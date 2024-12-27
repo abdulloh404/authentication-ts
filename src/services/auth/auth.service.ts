@@ -4,7 +4,6 @@ import User from '@src/models/user.model';
 class AuthService {
   public async register(requestBody: User): Promise<any> {
     console.log('requestBody', requestBody);
-
     try {
       const {
         first_name,
@@ -23,7 +22,7 @@ class AuthService {
         };
       }
 
-      const hashedPassword: string = await bcrypt.hash(password, 10);
+      const hashedPassword = await bcrypt.hash(password, 10);
 
       const user = await User.create({
         first_name,
