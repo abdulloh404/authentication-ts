@@ -114,9 +114,6 @@
     "includedScripts": []
   },
   "lint-staged": {
-    "*.{ts,tsx,js,jsx,json,css,scss,md}": [
-      "prettier --write",
-      "git add"
-    ]
+    "**/*.{ts,js, cjs,json,css,scss,md}": "prettier --write"
   }
 }
