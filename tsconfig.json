@@ -16,8 +16,6 @@
       "@controller/*": ["src/controller/*"],
       "@environment/*": ["src/environment/*"]
     },
-
-    // Strict Type-Checking Options
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,

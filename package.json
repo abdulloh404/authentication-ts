@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node dist/apps/authentication-api/main.js",
     "build": "nx build authentication-api",
-    "dev": "nx serve authentication-api",
+    "dev": "nx serve --ssl --ssl-key environments/certificate/localhost.com-key.pem --ssl-cert environments/certificate/localhost.com.pem --host localhost.com --port 4200",
     "watch": "nx run authentication-api:watch",
     "lint": "eslint --config ./eslint.config.ts --ext .ts src",
     "lint:fix": "eslint src/**/*.ts --fix",
@@ -76,7 +76,7 @@
     "@typescript-eslint/eslint-plugin": "^8.18.1",
     "@typescript-eslint/parser": "^8.18.1",
     "eslint": "^9.17.0",
-    "eslint-plugin-n": "^17.15.0",
+    "eslint-plugin-n": "^17.15.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "find": "^0.3.0",
     "fs-extra": "^11.2.0",
