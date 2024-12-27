@@ -4,7 +4,7 @@
   "scripts": {
     "start": "node dist/apps/authentication-ts/index.js",
     "build": "nx build authentication-ts",
-    "dev": "nx serve authentication-ts --ssl --ssl-key environments/certificate/localhost.com-key.pem --ssl-cert environments/certificate/localhost.com.pem --host localhost.com --port 4000",
+    "dev": "nx serve authentication-ts",
     "watch": "nx run authentication-ts:watch",
     "lint": "eslint --config ./eslint.config.ts --ext .ts src",
     "lint:fix": "eslint src/**/*.ts --fix",
