@@ -14,16 +14,15 @@ interface PersonalAccessTokenAttributes {
   updated_at?: Date;
 }
 
-interface PersonalAccessTokenCreationAttributes
-  extends Optional<
-    PersonalAccessTokenAttributes,
-    | 'id'
-    | 'abilities'
-    | 'last_used_at'
-    | 'expires_at'
-    | 'created_at'
-    | 'updated_at'
-  > {}
+type PersonalAccessTokenCreationAttributes = Optional<
+  PersonalAccessTokenAttributes,
+  | 'id'
+  | 'abilities'
+  | 'last_used_at'
+  | 'expires_at'
+  | 'created_at'
+  | 'updated_at'
+>;
 
 class PersonalAccessToken
   extends Model<
