@@ -17,6 +17,12 @@ export default [
       '**/*.cjs',
       '**/*.mjs',
     ],
+    languageOptions: {
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: './tsconfig.eslint.json',
+      },
+    },
     rules: {
       '@typescript-eslint/explicit-member-accessibility': 'warn',
       '@typescript-eslint/no-misused-promises': 0,
