@@ -1,14 +1,17 @@
 import { ObjectSchema } from 'joi';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function joi(schema: ObjectSchema, data: any): any {
   try {
-    const { error } = schema.validate(data, { abortEarly: false });
+    const { error } = schema.validate(data);
     if (error) {
-      const errors = error.details.map(detail => ({
-        key: detail.path.join('.'), // ระบุ path หรือ key ของฟิลด์ที่ผิด
-        message: detail.message, // ข้อความแสดงข้อผิดพลาด
-      }));
-      return { isValid: false, errors };
+      return {
+        isValid: false,
+        errors: error.details.map(err => ({
+          key: err.context?.key,
+          message: err.message,
+        })),
+      };
     }
     return { isValid: true, errors: [] };
   } catch (err) {
