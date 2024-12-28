@@ -8,8 +8,9 @@ const NODE_ENV = process.env['NODE_ENV'] ?? 'development';
 
 // Configure "dotenv"
 const result2 = dotenv.config({
-  path: path.join(__dirname, `./config/.env.${NODE_ENV}`),
+  path: path.resolve(process.cwd(), `config/.env.${NODE_ENV}`),
 });
+
 console.log(
   'Loading .env from:',
   path.join(__dirname, `./config/.env.${NODE_ENV}`),
@@ -22,5 +23,5 @@ if (result2.error) {
 
 // Configure moduleAlias
 if (__filename.endsWith('js')) {
-  moduleAlias.addAlias('@src', __dirname + '/dist');
+  moduleAlias.addAlias('@src', path.join(__dirname));
 }
