@@ -1,3 +1,0 @@
-[2024-12-28T16:57:19.101Z] INFO: Database connected succesfully started with port :undefined
-[2024-12-28T16:57:19.101Z] INFO: Express server started on: http://localhost:8081
-[2024-12-28T16:57:19.101Z] INFO: Loading .env from: config/.env.production

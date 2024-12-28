@@ -2,9 +2,10 @@ import BaseRouter from '@src/routes';
 import cookieParser from 'cookie-parser';
 import csrf from 'csurf';
 import Env from '@src/common/Env';
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import helmet from 'helmet';
 import HttpStatusCodes from '@src/common/HttpStatusCodes';
+import logger from 'jet-logger';
 import Paths from '@src/routes/common/Paths';
 import { corsConfig } from './config/cors.config';
 import { morganConfig } from './config/morgan.config';
@@ -32,10 +33,15 @@ if (Env.NodeEnv === NodeEnvs.Production.valueOf()) {
 }
 
 // Error handler
-app.use((err: Error, _req: Request, res: Response) => {
-  // if (Env.NodeEnv !== NodeEnvs.Test) {
-  //   logger.err(err, true);
-  // }
+app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
+  if (res.headersSent) {
+    return next(err);
+  }
+
+  if (Env.NodeEnv !== NodeEnvs.Test) {
+    logger.err(err, true);
+  }
+
   const status = HttpStatusCodes.BAD_REQUEST;
   res.status(status).json({
     error: err.message,
