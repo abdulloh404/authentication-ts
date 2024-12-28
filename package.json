@@ -9,8 +9,8 @@
     "build": "nx build",
     "test": "nx test",
     "lint": "eslint",
-    "prepare": "husky install",
     "lint:fix": "eslint src/**/*.ts --fix",
+    "prepare": "husky install",
     "migrate": "ts-node ./node_modules/.bin/sequelize-cli db:migrate",
     "migrate:undo": "ts-node ./node_modules/.bin/sequelize-cli db:migrate:undo",
     "seed": "ts-node ./node_modules/.bin/sequelize-cli db:seed:all"
