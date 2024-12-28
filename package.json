@@ -75,6 +75,8 @@
     "@types/eslint__js": "^8.42.3",
     "@types/express": "^5.0.0",
     "@types/find": "^0.2.4",
+    "@nx/playwright": "20.3.0",
+    "eslint-plugin-playwright": "^1.6.2",
     "@types/fs-extra": "^11.0.4",
     "@types/jasmine": "^5.1.5",
     "@types/jest": "^29.5.14",
