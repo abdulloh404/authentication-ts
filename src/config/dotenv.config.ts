@@ -1,7 +1,7 @@
-/* eslint-disable no-console */
 import path from 'path';
 import dotenv from 'dotenv';
 import moduleAlias from 'module-alias';
+import logger from 'jet-logger';
 
 // Check the env
 const NODE_ENV = process.env['NODE_ENV'] ?? 'development';
@@ -10,13 +10,8 @@ const NODE_ENV = process.env['NODE_ENV'] ?? 'development';
 const result2 = dotenv.config({
   path: path.resolve(process.cwd(), `config/.env.${NODE_ENV}`),
 });
-
-console.log(
-  'Loading .env from:',
-  path.join(__dirname, `./config/.env.${NODE_ENV}`),
-);
-console.log('Loaded environment variables:', process.env);
-
+logger.info(`Loading .env from: ${path.join(`config/.env.${NODE_ENV}`)}`);
+// console.log('Loaded environment variables:', process.env);
 if (result2.error) {
   throw result2.error;
 }

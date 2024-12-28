@@ -7,7 +7,8 @@ export const sequelize = new Sequelize(
   config.mysql.password || '',
   {
     host: config.mysql.host || 'localhost',
-    port: Number(config.mysql.port) || 3306,
+    port: parseInt(config.mysql.port ?? '3306', 10),
     dialect: 'mysql',
+    logging: false,
   },
 );
