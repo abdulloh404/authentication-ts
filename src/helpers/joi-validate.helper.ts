@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-console */
 import { ObjectSchema } from 'joi';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function joi(schema: ObjectSchema, data: any): any {
   try {
     const { error } = schema.validate(data);

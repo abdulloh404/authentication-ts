@@ -3,8 +3,6 @@ import User from '@src/models/user.model';
 
 class AuthService {
   public async register(requestBody: User): Promise<any> {
-    console.log('requestBody', requestBody);
-
     try {
       const {
         first_name,
