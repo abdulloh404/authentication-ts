@@ -26,7 +26,7 @@ class AuthController {
     } else {
       const errorResponse: HttpResponse = {
         status: HttpStatusCodes.INTERNAL_SERVER_ERROR,
-        message: 'User registered successfully',
+        message: 'User registered failed',
         errors: [response.message],
       };
 
