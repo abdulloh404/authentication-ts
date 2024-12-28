@@ -21,3 +21,6 @@
 {"level":"info","message":"::1 - - [28/Dec/2024:15:54:16 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
 {"level":"info","message":"::1 - - [28/Dec/2024:15:54:51 +0000] \"GET / HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
 {"level":"info","message":"::1 - - [28/Dec/2024:15:54:53 +0000] \"GET / HTTP/1.1\" - - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"::1 - - [28/Dec/2024:15:55:40 +0000] \"GET / HTTP/1.1\" 500 1383 \"-\" \"PostmanRuntime/7.43.0\""}
+{"level":"info","message":"::1 - - [28/Dec/2024:15:55:46 +0000] \"GET / HTTP/1.1\" 500 1383 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"::1 - - [28/Dec/2024:15:59:27 +0000] \"GET / HTTP/1.1\" 500 1383 \"-\" \"PostmanRuntime/7.43.0\""}
