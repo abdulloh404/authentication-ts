@@ -7,7 +7,7 @@ import { sequelize } from '@config/database.config';
 import path from 'path';
 
 const NODE_ENV = Env.NodeEnv;
-
+const SERVER_ENV_MSG = `Loading .env from: ${path.join(`config/.env.${NODE_ENV}`)}`;
 const SERVER_START_MSG = `Express server started on: http://${process.env['HOST']}:${Env.Port}`;
 const SERVER_START_MY_SQL =
   'Database connected succesfully started with port :' +
@@ -16,9 +16,9 @@ const SERVER_START_MY_SQL =
 (async () => {
   try {
     await sequelize.authenticate();
-    logger.info(SERVER_START_MY_SQL);
-    logger.info(`Loading .env from: ${path.join(`config/.env.${NODE_ENV}`)}`);
     server.listen(Env.Port, () => {
+      logger.info(SERVER_START_MY_SQL);
+      logger.info(SERVER_ENV_MSG);
       logger.info(SERVER_START_MSG);
     });
   } catch (error) {

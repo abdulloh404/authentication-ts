@@ -34,3 +34,5 @@
 {"level":"info","message":"::1 - - [28/Dec/2024:16:14:55 +0000] \"GET / HTTP/1.1\" 500 1383 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
 {"level":"info","message":"::1 - - [28/Dec/2024:16:21:20 +0000] \"GET / HTTP/1.1\" 500 1383 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
 {"level":"info","message":"::1 - - [28/Dec/2024:16:21:22 +0000] \"GET / HTTP/1.1\" 500 1383 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"::1 - - [28/Dec/2024:16:54:11 +0000] \"GET / HTTP/1.1\" 500 1383 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"::1 - - [28/Dec/2024:16:54:13 +0000] \"GET / HTTP/1.1\" 500 1383 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
