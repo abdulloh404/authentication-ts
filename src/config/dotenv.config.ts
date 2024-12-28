@@ -22,6 +22,6 @@ if (result2.error) {
 }
 
 // Configure moduleAlias
-if (__filename.endsWith('js')) {
-  moduleAlias.addAlias('@src', path.join(__dirname));
+if (__filename.endsWith('.js')) {
+  moduleAlias.addAlias('@src', path.resolve(__dirname, '../'));
 }

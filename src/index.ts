@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import './config';
+import './config/dotenv.config';
 import Env from '@src/common/Env';
 import logger from 'jet-logger';
 import server from './server';
