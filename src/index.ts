@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import './config';
 import Env from '@src/common/Env';
 import logger from 'jet-logger';
