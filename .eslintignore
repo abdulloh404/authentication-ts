@@ -1,0 +1,11 @@
+# Ignore build and temporary files
+dist/**/*.js
+tmp/
+migrations/*.js
+node_modules/
+.git/
+.nx/
+.husky/
+.github/
+
+
