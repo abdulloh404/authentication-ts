@@ -15,10 +15,10 @@ const SERVER_START_MY_SQL = `Database connected successfully on port: ${Env.Mysq
 const sslOptions = {
   key: fs.readFileSync(
     path.resolve('environments/certificate/localhost.com-key.pem'),
-  ),
+  ), // private key
   cert: fs.readFileSync(
     path.resolve('environments/certificate/localhost.com.pem'),
-  ),
+  ), // certificate
 };
 
 // Start the server
