@@ -30,3 +30,15 @@
 {"level":"info","message":"::1 - - [28/Dec/2024:17:43:34 +0000] \"POST /api/auth/register HTTP/1.1\" 404 157 \"-\" \"PostmanRuntime/7.43.0\""}
 {"level":"info","message":"::1 - - [28/Dec/2024:17:43:35 +0000] \"POST /api/auth/register HTTP/1.1\" 404 157 \"-\" \"PostmanRuntime/7.43.0\""}
 {"level":"info","message":"::1 - - [28/Dec/2024:17:46:41 +0000] \"POST /api/auth/register HTTP/1.1\" 404 157 \"-\" \"PostmanRuntime/7.43.0\""}
+{"level":"info","message":"127.0.0.1 - - [31/Dec/2024:04:33:51 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [31/Dec/2024:04:33:52 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [31/Dec/2024:04:33:53 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [31/Dec/2024:04:33:53 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [31/Dec/2024:04:33:56 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [31/Dec/2024:04:35:06 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"https://localhost.com:3000/\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [31/Dec/2024:04:36:53 +0000] \"GET / HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [31/Dec/2024:04:36:54 +0000] \"GET / HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [31/Dec/2024:04:36:54 +0000] \"GET / HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [31/Dec/2024:04:36:56 +0000] \"GET / HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [31/Dec/2024:04:36:57 +0000] \"GET / HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [31/Dec/2024:04:37:28 +0000] \"GET / HTTP/1.1\" 404 43 \"-\" \"PostmanRuntime/7.43.0\""}

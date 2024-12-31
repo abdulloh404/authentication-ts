@@ -34,6 +34,14 @@ if (Env.NodeEnv === NodeEnvs.Production.valueOf()) {
   app.use(helmet());
 }
 
+// Handle unmatched routes (404 Not Found)
+app.use((_req: Request, res: Response) => {
+  res.status(HttpStatusCodes.NOT_FOUND).json({
+    status: HttpStatusCodes.NOT_FOUND,
+    message: 'Route not found.',
+  });
+});
+
 // Error handler
 app.use((err: Error, _req: Request, res: Response, next: NextFunction) => {
   if (res.headersSent) {
