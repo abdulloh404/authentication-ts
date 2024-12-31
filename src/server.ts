@@ -20,10 +20,6 @@ app.use(corsConfig);
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
-// Routes
-app.use(Paths.Base, BaseRouter);
-app.use(apiRouter);
-
 // Dev-specific middlewares
 if (Env.NodeEnv === NodeEnvs.Dev.valueOf()) {
   app.use(morganConfig);
@@ -33,6 +29,10 @@ if (Env.NodeEnv === NodeEnvs.Dev.valueOf()) {
 if (Env.NodeEnv === NodeEnvs.Production.valueOf()) {
   app.use(helmet());
 }
+
+// Routes
+app.use(Paths.Base, BaseRouter);
+app.use(apiRouter);
 
 // Handle unmatched routes (404 Not Found)
 app.use((_req: Request, res: Response) => {
