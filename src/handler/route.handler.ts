@@ -21,7 +21,7 @@ interface RouteOptions<T = Record<string, any>> {
   onError?: (error: Error, req: Request, res: Response) => void;
 }
 
-export const route = <T = Record<string, any>>(
+export const createRoute = <T = Record<string, any>>(
   router: Router,
   options: RouteOptions<T>,
 ): void => {
