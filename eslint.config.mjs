@@ -9,7 +9,7 @@ export default [
     ignores: ['**/tmp', '**/dist', '**/migrations', '**/node_modules'],
   },
   {
-    files: ['src/**/*.ts'],
+    files: ['src/**/*.ts', 'e2e/**/*.ts'],
     rules: {
       '@typescript-eslint/explicit-member-accessibility': 'warn',
       '@typescript-eslint/no-misused-promises': 0,
