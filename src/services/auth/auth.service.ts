@@ -5,7 +5,6 @@ import { IHttpResponse } from '@src/common/HttpResponse';
 export class AuthService {
   public async register(params: User): Promise<IHttpResponse> {
     try {
-      // Destructure and set default values
       const {
         firstName,
         lastName,
@@ -15,9 +14,9 @@ export class AuthService {
         loginBy = 'regular',
       } = params;
 
+      // eslint-disable-next-line no-console
       console.log('Register params:', params);
 
-      // Check if the email already exists
       const existingUser = await User.findOne({ where: { email } });
       if (existingUser) {
         return {
@@ -28,10 +27,8 @@ export class AuthService {
         };
       }
 
-      // Hash the password
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      // Create the user
       const user = await User.create({
         firstName,
         lastName,
@@ -42,7 +39,6 @@ export class AuthService {
         isVerify: 0,
       });
 
-      // Return success response
       return {
         status: HttpStatusCodes.CREATED,
         message: 'User registered successfully.',
@@ -57,9 +53,8 @@ export class AuthService {
         errors: null,
       };
     } catch (error: unknown) {
+      // eslint-disable-next-line no-console
       console.error('Register error:', error);
-
-      // Return error response
       return {
         status: HttpStatusCodes.INTERNAL_SERVER_ERROR,
         message: 'User registration failed.',
