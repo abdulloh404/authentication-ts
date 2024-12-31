@@ -7,11 +7,11 @@ export default [
   ...configs['flat/javascript'],
   {
     ignores: [
-      '**/dist',
-      'temp/**/*',
-      'tmp/**/*.js',
-      '**/migrations',
-      '**/node_modules',
+      'tmp/**/*',
+      'tmp/**/*',
+      'dist/**/*',
+      'migrations/**/*',
+      'node_modules/**/*',
     ],
   },
   {
