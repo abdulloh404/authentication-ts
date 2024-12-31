@@ -6,7 +6,7 @@ import { joi } from '@src/helpers/joi-validate.helper';
 import { validateRegisterRequest } from '@src/schema/auth/auth.schema';
 
 class AuthController {
-  public async register(params: User): Promise<any> {
+  public async register(params: User): Promise<HttpResponse> {
     const result = joi(validateRegisterRequest, params);
     if (!result.isValid) {
       return {
