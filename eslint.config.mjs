@@ -10,7 +10,7 @@ export default [
       'tmp/**/*',
       'tmp/**/*',
       'dist/**/*',
-      'migrations/**/*',
+      'migrations/**/*.js',
       'node_modules/**/*',
     ],
   },
