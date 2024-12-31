@@ -6,7 +6,7 @@ import { joi } from '@src/helpers/joi-validate.helper';
 import { validateRegisterRequest } from '@src/schema/auth/auth.schema';
 
 class AuthController {
-  public async register(params: User): Promise<IHttpResponse> {
+  public async register(_header: any, params: User): Promise<IHttpResponse> {
     const result = joi(validateRegisterRequest, params);
     if (!result.isValid) {
       return {
@@ -22,7 +22,7 @@ class AuthController {
       return {
         status: HttpStatusCodes.CREATED,
         message: 'User registered successfully',
-        response: response.response,
+        data: response.response,
       };
     } else {
       return {

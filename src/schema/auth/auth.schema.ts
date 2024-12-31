@@ -10,7 +10,7 @@ export const validateRegisterRequest = Joi.object({
     .valid(Joi.ref('password'))
     .required()
     .messages({ 'any.only': 'Passwords do not match' }),
-}).options({ abortEarly: false });
+});
 
 export const validateLogin = (data: any) => {
   const schema = Joi.object({

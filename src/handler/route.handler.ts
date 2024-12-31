@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { IHttpResponse } from '@src/common/HttpResponse';
 import {
   Router,
   RequestHandler,
@@ -11,45 +12,29 @@ interface RouteOptions<T = Record<string, any>> {
   path: string;
   method: 'get' | 'post' | 'put' | 'delete' | 'patch';
   middlewares?: RequestHandler[];
-  controller: (payload: T) => Promise<{
-    status: number;
-    message: string;
-    data?: any;
-    errors?: any;
-  }>;
+  controller: (...payload: any[]) => Promise<IHttpResponse>;
   policies?: ((payload: T) => Promise<boolean> | boolean)[];
   onError?: (error: Error, req: Request, res: Response) => void;
 }
 
-export const createRoute = <T = Record<string, any>>(
-  router: Router,
-  options: RouteOptions<T>,
-): void => {
-  const {
-    path,
-    method,
-    middlewares = [],
-    controller,
-    policies = [],
-    onError,
-  } = options;
+export const createRoute = (router: Router, options: RouteOptions): void => {
+  const { path, method, middlewares = [], controller, policies = [] } = options;
 
   router[method](
     path,
     ...middlewares,
     async (req: Request, res: Response, next: NextFunction): Promise<void> => {
       try {
-        // Combine Payload
         const payload = {
+          headers: req.headers,
           body: req.body,
           params: req.params,
           query: req.query,
-          headers: req.headers,
-        } as T;
+        };
 
-        // Check Policies
+        // ตรวจสอบ Policies
         for (const policy of policies) {
-          const isAuthorized = await policy(payload);
+          const isAuthorized = await policy(payload.body);
           if (!isAuthorized) {
             res.status(403).json({
               status: 403,
@@ -59,25 +44,23 @@ export const createRoute = <T = Record<string, any>>(
           }
         }
 
-        console.log(payload);
+        // สร้าง arguments สำหรับ controller ตามจำนวนพารามิเตอร์ที่ต้องการ
+        const controllerArgs: any[] = [];
+        if (controller.length >= 1) controllerArgs.push(payload.headers); // ส่ง headers หาก controller ต้องการ
+        if (controller.length >= 2) controllerArgs.push(payload.body); // ส่ง body หาก controller ต้องการ
 
-        // Execute Controller
-        const result = await controller(payload);
+        // เรียกใช้งาน controller
+        const result = await controller(...controllerArgs);
 
-        // Send Response
-        res.status(result.status).json({
-          status: result.status,
-          message: result.message,
+        // ส่ง response
+        res.status(result.status || 200).json({
+          status: result.status || 200,
+          message: result.message || 'Success',
           data: result.data || null,
           errors: result.errors || null,
         });
-        return;
-      } catch (error: unknown) {
-        if (onError) {
-          onError(error as Error, req, res);
-          return;
-        }
-        next(error);
+      } catch (error) {
+        return next(error);
       }
     },
   );

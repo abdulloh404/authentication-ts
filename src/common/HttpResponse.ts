@@ -3,6 +3,6 @@ import HttpStatusCodes from './HttpStatusCodes';
 export interface IHttpResponse {
   status: HttpStatusCodes;
   message: string;
-  response?: any;
+  data?: any;
   errors?: any[];
 }

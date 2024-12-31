@@ -3,24 +3,28 @@ import { ObjectSchema } from 'joi';
 
 export function joi(schema: ObjectSchema, data: any): any {
   try {
-    const { error } = schema.validate(data, { abortEarly: false });
+    const { error } = schema.validate(data, {
+      abortEarly: false,
+      stripUnknown: true,
+    });
     if (error) {
-      const missingKeys = Object.keys(schema.describe()['keys']).filter(
-        key => !(key in data),
+      const uniqueErrors = error.details.reduce(
+        (acc, err) => {
+          const exists = acc.find(e => e.key === err.context?.key);
+          if (!exists) {
+            acc.push({
+              key: err.context?.key || 'unknown',
+              message: err.message,
+            });
+          }
+          return acc;
+        },
+        [] as { key: string; message: string }[],
       );
 
       return {
         isValid: false,
-        errors: [
-          ...missingKeys.map(key => ({
-            key,
-            message: `"${key}" is required`,
-          })),
-          ...error.details.map(err => ({
-            key: err.context?.key,
-            message: err.message,
-          })),
-        ],
+        errors: uniqueErrors,
       };
     }
     return { isValid: true, errors: [] };
