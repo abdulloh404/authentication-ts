@@ -1,4 +1,4 @@
-import './config/dotenv.config';
+import './config/dotenv.config'; // required for loading environment variables
 import Env from '@src/common/Env';
 import fs from 'fs';
 import https from 'https';
