@@ -1,53 +1,70 @@
 import bcrypt from 'bcryptjs';
 import User from '@src/models/user.model';
-
-class AuthService {
-  public async register(requestBody: User): Promise<any> {
+import HttpStatusCodes from '@src/common/HttpStatusCodes';
+import { IHttpResponse } from '@src/common/HttpResponse';
+export class AuthService {
+  public async register(params: User): Promise<IHttpResponse> {
     try {
+      // Destructure and set default values
       const {
-        first_name,
-        last_name,
+        firstName,
+        lastName,
         email,
         password,
         role = 'user',
-        login_by = 'regular',
-      } = requestBody as User;
+        loginBy = 'regular',
+      } = params;
 
+      console.log('Register params:', params);
+
+      // Check if the email already exists
       const existingUser = await User.findOne({ where: { email } });
-      if (existingUser != null) {
+      if (existingUser) {
         return {
-          success: false,
+          status: HttpStatusCodes.CONFLICT,
           message: 'Email is already in use.',
+          data: null,
+          errors: null,
         };
       }
 
+      // Hash the password
       const hashedPassword = await bcrypt.hash(password, 10);
 
+      // Create the user
       const user = await User.create({
-        first_name,
-        last_name,
+        firstName,
+        lastName,
         email,
         password: hashedPassword,
         role,
-        login_by,
-        is_verify: 0,
+        loginBy,
+        isVerify: 0,
       });
 
+      // Return success response
       return {
-        success: true,
+        status: HttpStatusCodes.CREATED,
+        message: 'User registered successfully.',
         data: {
           id: user.id,
-          first_name: user.first_name,
-          last_name: user.last_name,
+          firstName: user.firstName,
+          lastName: user.lastName,
           email: user.email,
           role: user.role,
-          login_by: user.login_by,
+          loginBy: user.loginBy,
         },
+        errors: null,
       };
     } catch (error: unknown) {
+      console.error('Register error:', error);
+
+      // Return error response
       return {
-        success: false,
-        message: (error as Error).message,
+        status: HttpStatusCodes.INTERNAL_SERVER_ERROR,
+        message: 'User registration failed.',
+        data: null,
+        errors: [(error as Error).message],
       };
     }
   }

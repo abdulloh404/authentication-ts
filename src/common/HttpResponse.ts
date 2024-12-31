@@ -5,5 +5,5 @@ export interface IHttpResponse {
   status: HttpStatusCodes;
   message: string;
   data?: any;
-  errors?: any[];
+  errors?: any;
 }

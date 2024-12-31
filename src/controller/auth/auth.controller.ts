@@ -1,15 +1,11 @@
 import AuthService from '@service/auth/auth.service';
 import HttpStatusCodes from '@src/common/HttpStatusCodes';
-import User from '@src/models/user.model';
 import { IHttpResponse } from '@src/common/HttpResponse';
 import { joi } from '@src/helpers/joi-validate.helper';
 import { validateRegisterRequest } from '@src/schema/auth/auth.schema';
 
 class AuthController {
-  public async register(
-    _header: undefined,
-    params: User,
-  ): Promise<IHttpResponse> {
+  public async register(_header: unknown, params: any): Promise<IHttpResponse> {
     const result = joi(validateRegisterRequest, params);
     if (!result.isValid) {
       return {
@@ -18,20 +14,19 @@ class AuthController {
         errors: result.errors,
       };
     }
-
     const response = await AuthService.register(params);
 
     if (response.status) {
       return {
-        status: HttpStatusCodes.CREATED,
-        message: 'User registered successfully',
-        data: response.response,
+        status: response.status,
+        message: response.message,
+        data: response.data,
       };
     } else {
       return {
-        status: HttpStatusCodes.INTERNAL_SERVER_ERROR,
-        message: 'User registration failed',
-        errors: [response.message],
+        status: response.status,
+        message: response.message,
+        errors: [response.errors],
       };
     }
   }

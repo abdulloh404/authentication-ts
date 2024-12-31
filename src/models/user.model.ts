@@ -3,32 +3,32 @@ import { sequelize } from '@config/database.config';
 
 interface UserAttributes {
   id: number;
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  email_verified_at?: 'line' | 'facebook' | 'gmail' | 'google';
-  is_verify: number;
+  emailVerifiedAt?: 'line' | 'facebook' | 'gmail' | 'google';
+  isVerify: number;
   password: string;
   role: 'user' | 'admin';
-  login_by: 'regular' | 'facebook' | 'line' | 'google';
-  remember_token?: string | null;
-  line_id?: string;
-  facebook_id?: string;
-  google_id?: string;
-  created_at?: Date;
-  updated_at?: Date;
+  loginBy: 'regular' | 'facebook' | 'line' | 'google';
+  rememberToken?: string | null;
+  lineId?: string;
+  facebookId?: string;
+  googleId?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 type UserCreationAttributes = Optional<
   UserAttributes,
   | 'id'
-  | 'email_verified_at'
-  | 'line_id'
-  | 'facebook_id'
-  | 'google_id'
-  | 'created_at'
-  | 'updated_at'
-  | 'remember_token'
+  | 'emailVerifiedAt'
+  | 'lineId'
+  | 'facebookId'
+  | 'googleId'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'rememberToken'
 >;
 
 class User
@@ -36,19 +36,20 @@ class User
   implements UserAttributes
 {
   public id!: number;
-  public first_name!: string;
-  public last_name!: string;
+  public firstName!: string;
+  public lastName!: string;
   public email!: string;
-  public email_verified_at?: 'line' | 'facebook' | 'gmail' | 'google';
-  public is_verify!: number;
+  public emailVerifiedAt?: 'line' | 'facebook' | 'gmail' | 'google';
+  public isVerify!: number;
   public password!: string;
   public role!: 'user' | 'admin';
-  public login_by!: 'regular' | 'facebook' | 'line' | 'google';
-  public line_id?: string;
-  public facebook_id?: string;
-  public google_id?: string;
-  public created_at?: Date;
-  public updated_at?: Date;
+  public loginBy!: 'regular' | 'facebook' | 'line' | 'google';
+  public rememberToken?: string | null;
+  public lineId?: string;
+  public facebookId?: string;
+  public googleId?: string;
+  public createdAt?: Date;
+  public updatedAt?: Date;
 }
 
 User.init(
@@ -58,27 +59,31 @@ User.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    first_name: {
+    firstName: {
       type: DataTypes.CHAR(40),
       allowNull: false,
+      field: 'first_name',
     },
-    last_name: {
+    lastName: {
       type: DataTypes.CHAR(40),
       allowNull: false,
+      field: 'last_name',
     },
     email: {
       type: DataTypes.STRING(164),
       allowNull: false,
       unique: true,
     },
-    email_verified_at: {
+    emailVerifiedAt: {
       type: DataTypes.ENUM('line', 'facebook', 'gmail', 'google'),
       allowNull: true,
+      field: 'email_verified_at',
     },
-    is_verify: {
+    isVerify: {
       type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,
+      field: 'is_verify',
     },
     password: {
       type: DataTypes.STRING(132),
@@ -89,36 +94,43 @@ User.init(
       allowNull: false,
       defaultValue: 'user',
     },
-    remember_token: {
+    rememberToken: {
       type: DataTypes.STRING(132),
       allowNull: true,
+      field: 'remember_token',
     },
-    login_by: {
+    loginBy: {
       type: DataTypes.ENUM('regular', 'facebook', 'line', 'google'),
       allowNull: false,
       defaultValue: 'regular',
+      field: 'login_by',
     },
-    line_id: {
+    lineId: {
       type: DataTypes.STRING(132),
       allowNull: true,
+      field: 'line_id',
     },
-    facebook_id: {
+    facebookId: {
       type: DataTypes.STRING(132),
       allowNull: true,
+      field: 'facebook_id',
     },
-    google_id: {
+    googleId: {
       type: DataTypes.STRING(132),
       allowNull: true,
+      field: 'google_id',
     },
-    created_at: {
+    createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
+      field: 'created_at',
     },
-    updated_at: {
+    updatedAt: {
       type: DataTypes.DATE,
       allowNull: true,
       defaultValue: DataTypes.NOW,
+      field: 'updated_at',
     },
   },
   {
