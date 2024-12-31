@@ -1,6 +1,7 @@
 import { DataTypes, Model, Optional } from 'sequelize';
 import { sequelize } from '@config/database.config';
 
+// Define the attributes for the User model
 export interface UserAttributes {
   id: number;
   firstName: string;
@@ -16,11 +17,18 @@ export interface UserAttributes {
   updatedAt?: Date;
 }
 
+// Define optional attributes for model creation
 type UserCreationAttributes = Optional<
   UserAttributes,
-  'id' | 'emailVerifiedAt' | 'createdAt' | 'updatedAt' | 'rememberToken'
+  | 'id'
+  | 'emailVerifiedAt'
+  | 'rememberToken'
+  | 'googleId'
+  | 'createdAt'
+  | 'updatedAt'
 >;
 
+// Define the User class
 class User
   extends Model<UserAttributes, UserCreationAttributes>
   implements UserAttributes
@@ -34,11 +42,17 @@ class User
   public role!: 'user' | 'admin';
   public loginBy!: 'regular' | 'facebook' | 'line' | 'google';
   public rememberToken?: string | null;
-  public facebookId?: string;
+  public googleId?: string;
   public createdAt?: Date;
   public updatedAt?: Date;
+
+  // Add any instance-level methods here (e.g., helper functions)
+  public getFullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
 }
 
+// Initialize the User model
 User.init(
   {
     id: {
@@ -108,6 +122,7 @@ User.init(
     sequelize,
     tableName: 'users',
     timestamps: true,
+    underscored: true,
   },
 );
 
