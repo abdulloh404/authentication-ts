@@ -7,14 +7,22 @@ export default [
   ...configs['flat/javascript'],
   {
     ignores: [
-      '**/dist/**/*.js',
-      '**/tmp/**',
-      '**/migrations/*.js',
-      '**/node_modules/**',
+      '**/dist',
+      'temp/**/*',
+      'tmp/**/*.js',
+      '**/migrations',
+      '**/node_modules',
     ],
   },
   {
-    files: ['**/*.ts', '**/*.js', '**/*.cjs', '**/*.mjs'],
+    files: [
+      '**/*.ts',
+      '**/*.tsx',
+      '**/*.js',
+      '**/*.jsx',
+      '**/*.cjs',
+      '**/*.mjs',
+    ],
     rules: {
       '@typescript-eslint/explicit-member-accessibility': 'warn',
       '@typescript-eslint/no-misused-promises': 0,
