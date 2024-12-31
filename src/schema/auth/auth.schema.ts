@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Joi from 'joi';
 
 // Validate request schemas
@@ -6,10 +7,7 @@ export const validateRegisterRequest = Joi.object({
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
   password: Joi.string().min(6).required(),
-  confirmPassword: Joi.string()
-    .valid(Joi.ref('password'))
-    .required()
-    .messages({ 'any.only': 'Passwords do not match' }),
+  confirmPassword: Joi.string().valid(Joi.ref('password')).required(),
 });
 
 export const validateLogin = (data: any) => {

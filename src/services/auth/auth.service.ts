@@ -36,7 +36,6 @@ export class AuthService {
         password: hashedPassword,
         role,
         loginBy,
-        isVerify: 0,
       });
 
       return {
