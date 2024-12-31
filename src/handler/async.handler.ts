@@ -1,4 +1,4 @@
-import { HttpResponse } from '@src/common/HttpResponse';
+import { IHttpResponse } from '@src/common/HttpResponse';
 import { Request, Response, NextFunction } from 'express';
 import { ParamsDictionary } from 'express-serve-static-core';
 import { IncomingHttpHeaders } from 'http';
@@ -14,7 +14,7 @@ interface IAsyncHandler {
 
 export const async =
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (handler: (requestBody: any, requestData: any) => Promise<HttpResponse>) =>
+  (handler: (requestBody: any, requestData: any) => Promise<IHttpResponse>) =>
     async (req: Request, res: Response, next: NextFunction): Promise<void> => {
       try {
         const requestBody = req.body;
@@ -26,7 +26,7 @@ export const async =
           userAgent: req.get('User-Agent'),
         };
 
-        const response: HttpResponse = await handler(requestBody, requestData);
+        const response: IHttpResponse = await handler(requestBody, requestData);
 
         res.status(response.status).json(response);
       } catch (error) {

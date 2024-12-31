@@ -40,11 +40,11 @@ export const createRoute = <T = Record<string, any>>(
     async (req: Request, res: Response, next: NextFunction): Promise<void> => {
       try {
         // Combine Payload
-        const payload: T = {
-          ...req.body,
-          ...req.params,
-          ...req.query,
-          ...req.headers,
+        const payload = {
+          body: req.body,
+          params: req.params,
+          query: req.query,
+          headers: req.headers,
         } as T;
 
         // Check Policies
@@ -58,6 +58,8 @@ export const createRoute = <T = Record<string, any>>(
             return;
           }
         }
+
+        console.log(payload);
 
         // Execute Controller
         const result = await controller(payload);

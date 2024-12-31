@@ -3,14 +3,14 @@ import Joi from 'joi';
 // Validate request schemas
 export const validateRegisterRequest = Joi.object({
   email: Joi.string().email().required(),
-  firstName: Joi.string().email().required(),
-  lastName: Joi.string().email().required(),
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
   password: Joi.string().min(6).required(),
   confirmPassword: Joi.string()
     .valid(Joi.ref('password'))
     .required()
     .messages({ 'any.only': 'Passwords do not match' }),
-});
+}).options({ abortEarly: false });
 
 export const validateLogin = (data: any) => {
   const schema = Joi.object({

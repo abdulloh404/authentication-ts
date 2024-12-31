@@ -1,17 +1,26 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-console */
 import { ObjectSchema } from 'joi';
 
 export function joi(schema: ObjectSchema, data: any): any {
   try {
-    const { error } = schema.validate(data);
+    const { error } = schema.validate(data, { abortEarly: false });
     if (error) {
+      const missingKeys = Object.keys(schema.describe()['keys']).filter(
+        key => !(key in data),
+      );
+
       return {
         isValid: false,
-        errors: error.details.map(err => ({
-          key: err.context?.key,
-          message: err.message,
-        })),
+        errors: [
+          ...missingKeys.map(key => ({
+            key,
+            message: `"${key}" is required`,
+          })),
+          ...error.details.map(err => ({
+            key: err.context?.key,
+            message: err.message,
+          })),
+        ],
       };
     }
     return { isValid: true, errors: [] };

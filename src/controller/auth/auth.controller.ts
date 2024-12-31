@@ -1,12 +1,12 @@
 import AuthService from '@service/auth/auth.service';
 import HttpStatusCodes from '@src/common/HttpStatusCodes';
 import User from '@src/models/user.model';
-import { HttpResponse } from '@src/common/HttpResponse';
+import { IHttpResponse } from '@src/common/HttpResponse';
 import { joi } from '@src/helpers/joi-validate.helper';
 import { validateRegisterRequest } from '@src/schema/auth/auth.schema';
 
 class AuthController {
-  public async register(params: User): Promise<HttpResponse> {
+  public async register(params: User): Promise<IHttpResponse> {
     const result = joi(validateRegisterRequest, params);
     if (!result.isValid) {
       return {

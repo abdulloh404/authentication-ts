@@ -1,6 +1,6 @@
 import HttpStatusCodes from './HttpStatusCodes';
 
-export interface HttpResponse {
+export interface IHttpResponse {
   status: HttpStatusCodes;
   message: string;
   response?: any;
