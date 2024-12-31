@@ -7,11 +7,9 @@ import path from 'path';
 import server from './server';
 import { sequelize } from '@config/database.config';
 
-/* eslint-disable no-console */
-
 const SERVER_ENV_MSG = `Loading .env from: ${path.join('config/.env.' + Env.NodeEnv)}`;
 const SERVER_START_MSG = `Express server started on: https://${Env.Host}:${Env.Port}`;
-const SERVER_START_MY_SQL = `Database connected successfully on port: ${3000}`;
+const SERVER_START_MY_SQL = `Database connected successfully on port: ${Env.MysqlPort}`;
 
 // SSL options
 const sslOptions = {
@@ -37,6 +35,6 @@ const sslOptions = {
     });
   } catch (error) {
     console.error('Unable to connect to the database:', error);
-    process.exit(1); // Exit process if database connection fails
+    process.exit(1);
   }
 })();

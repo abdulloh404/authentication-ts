@@ -12,6 +12,6 @@ export default jetEnv({
   MysqlHost: str,
   MysqlPort: num,
   MysqlUser: str,
-  MysqlPassword: str,
+  // MysqlPassword: str,
   MysqlDatabase: str,
 });
