@@ -32,7 +32,6 @@ export const createRoute = (router: Router, options: RouteOptions): void => {
           query: req.query,
         };
 
-        // ตรวจสอบ Policies
         for (const policy of policies) {
           const isAuthorized = await policy(payload.body);
           if (!isAuthorized) {
@@ -46,13 +45,11 @@ export const createRoute = (router: Router, options: RouteOptions): void => {
 
         // สร้าง arguments สำหรับ controller ตามจำนวนพารามิเตอร์ที่ต้องการ
         const controllerArgs: any[] = [];
-        if (controller.length >= 1) controllerArgs.push(payload.headers); // ส่ง headers หาก controller ต้องการ
-        if (controller.length >= 2) controllerArgs.push(payload.body); // ส่ง body หาก controller ต้องการ
+        if (controller.length >= 1) controllerArgs.push(payload.headers);
+        if (controller.length >= 2) controllerArgs.push(payload.body);
 
-        // เรียกใช้งาน controller
         const result = await controller(...controllerArgs);
 
-        // ส่ง response
         res.status(result.status || 200).json({
           status: result.status || 200,
           message: result.message || 'Success',
