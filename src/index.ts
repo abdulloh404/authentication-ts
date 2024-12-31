@@ -1,4 +1,3 @@
-import './config/dotenv.config';
 import Env from '@src/common/Env';
 import fs from 'fs';
 import https from 'https';
@@ -6,6 +5,7 @@ import logger from 'jet-logger';
 import path from 'path';
 import server from './server';
 import { sequelize } from '@config/database.config';
+import './config/dotenv.config';
 
 /* eslint-disable no-console */
 
