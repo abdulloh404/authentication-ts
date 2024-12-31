@@ -1,27 +1,45 @@
-/* eslint-disable no-console */
-import './config/dotenv.config';
 import Env from '@src/common/Env';
+import fs from 'fs';
+import https from 'https';
 import logger from 'jet-logger';
+import path from 'path';
 import server from './server';
 import { sequelize } from '@config/database.config';
-import path from 'path';
+import './config/dotenv.config';
 
-const NODE_ENV = Env.NodeEnv;
-const SERVER_ENV_MSG = `Loading .env from: ${path.join(`config/.env.${NODE_ENV}`)}`;
-const SERVER_START_MSG = `Express server started on: http://${process.env['HOST']}:${Env.Port}`;
-const SERVER_START_MY_SQL =
-  'Database connected succesfully started with port :' +
-  process.env['MYSQL_PORT'];
+/* eslint-disable no-console */
 
+const SERVER_ENV_MSG = `Loading .env from: ${path.join('config/.env.' + Env.NodeEnv)}`;
+const SERVER_START_MSG = `Express server started on: https://${Env.Host}:${Env.Port}`;
+const SERVER_START_MY_SQL = `Database connected successfully on port: ${Env.MysqlPort}`;
+
+// SSL options
+const sslOptions = {
+  key: fs.readFileSync(
+    path.resolve(
+      __dirname,
+      '../environments/certificate/localhost.com-key.pem',
+    ),
+  ),
+  cert: fs.readFileSync(
+    path.resolve(__dirname, '../environments/certificate/localhost.com.pem'),
+  ),
+};
+
+// Start the server
 (async () => {
   try {
+    // Test database connection
     await sequelize.authenticate();
-    server.listen(Env.Port, () => {
-      logger.info(SERVER_START_MY_SQL);
+    logger.info(SERVER_START_MY_SQL);
+
+    // Start HTTPS server
+    https.createServer(sslOptions, server).listen(Env.Port, Env.Host, () => {
       logger.info(SERVER_ENV_MSG);
       logger.info(SERVER_START_MSG);
     });
   } catch (error) {
     console.error('Unable to connect to the database:', error);
+    process.exit(1); // Exit process if database connection fails
   }
 })();
