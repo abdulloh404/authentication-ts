@@ -1,10 +1,15 @@
 import AuthController from '@src/controller/auth/auth.controller';
 import Paths from '../common/Paths';
-import { async } from '@src/handler/async.handler';
 import { Router } from 'express';
+import { route } from '@src/handler/route.handler';
 
-const authRrouter: Router = Router();
+const authRouter: Router = Router();
 
-authRrouter.post(Paths.Auth.register, async(AuthController.register));
+route(authRouter, {
+  path: Paths.Auth.register,
+  method: 'post',
+  controller: AuthController.register,
+  middlewares: [],
+});
 
-export default authRrouter;
+export default authRouter;
