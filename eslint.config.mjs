@@ -6,13 +6,7 @@ export default [
   ...configs['flat/typescript'],
   ...configs['flat/javascript'],
   {
-    ignores: [
-      '**/dist',
-      'temp/**/*',
-      'tmp/**/*.js',
-      '**/migrations',
-      '**/node_modules',
-    ],
+    ignores: ['**/tmp', '**/dist', '**/migrations', '**/node_modules'],
   },
   {
     files: [
