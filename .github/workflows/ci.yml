@@ -28,7 +28,7 @@ jobs:
       - run: npm ci --legacy-peer-deps
       - uses: nrwl/nx-set-shas@v4
 
-      # - run: npx prettier --check .
+      - run: npx prettier --check .
 
       - run: npx nx affected --target=lint --parallel
       - run: npx nx affected --target=test --parallel
