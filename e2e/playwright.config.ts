@@ -7,6 +7,7 @@ export default defineConfig({
   testDir: './tests',
   timeout: 30000,
   retries: 2,
+  globalSetup: './src/global-setup.ts',
   use: {
     baseURL: process.env['BASE_URL'] || 'http://localhost:3000',
     headless: true,
