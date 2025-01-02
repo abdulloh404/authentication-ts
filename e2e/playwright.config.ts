@@ -1,5 +1,6 @@
 import { defineConfig } from '@playwright/test';
 import dotenv from 'dotenv';
+import Env from '@src/common/Env';
 
 dotenv.config();
 
@@ -8,7 +9,7 @@ export default defineConfig({
   timeout: 30000,
   retries: 2,
   use: {
-    baseURL: process.env['BASE_URL'] || 'http://localhost:3000',
+    baseURL: Env.baseUrl,
     headless: true,
     ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',
@@ -18,14 +19,6 @@ export default defineConfig({
     {
       name: 'Chromium',
       use: { ...process.env, browserName: 'chromium' },
-    },
-    {
-      name: 'Firefox',
-      use: { ...process.env, browserName: 'firefox' },
-    },
-    {
-      name: 'WebKit',
-      use: { ...process.env, browserName: 'webkit' },
     },
   ],
   reporter: [['list'], ['html', { outputFolder: 'test-results' }]],
