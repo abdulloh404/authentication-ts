@@ -62,14 +62,6 @@
         "parallel": true
       }
     },
-    "e2e": {
-      "executor": "nx:run-commands",
-      "defaultConfiguration": "test",
-      "options": {
-        "command": "npx playwright test"
-      },
-      "outputs": ["{workspaceRoot}/e2e/test-results"]
-    },
     "docker-build": {
       "dependsOn": ["build"],
       "command": "docker build -f Dockerfile . -t authentication-api"

@@ -5,11 +5,13 @@
   "implicitDependencies": ["authentication-api"],
   "targets": {
     "e2e": {
-      "executor": "nx:run-commands",
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{e2eProjectRoot}"],
       "options": {
-        "command": "npx playwright test"
+        "jestConfig": "e2e/jest.config.ts",
+        "passWithNoTests": true
       },
-      "outputs": ["{workspaceRoot}/e2e/test-results"]
+      "dependsOn": ["authentication-api:build"]
     }
   }
 }
