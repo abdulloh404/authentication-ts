@@ -1,11 +1,10 @@
-import { test, expect } from '@playwright/test';
 import Env from '@src/common/Env';
+import { expect, test } from '@playwright/test';
 
-const BASE_URL = Env.baseUrl;
 test.describe('Authentication API Tests', () => {
   test('Register User', async ({ request }) => {
     const uniqueEmail = `john.doe+${Date.now()}@example.com`;
-    const response = await request.post(`${BASE_URL}/api/auth/register`, {
+    const response = await request.post(`${Env.baseUrl}/api/auth/register`, {
       data: {
         firstName: 'John',
         lastName: 'Doe',
