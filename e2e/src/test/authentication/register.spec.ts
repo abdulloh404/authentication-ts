@@ -6,7 +6,6 @@ test.describe('Authentication API Tests', () => {
   test('Register User', async ({ request }) => {
     const uniqueEmail = `john.doe+${Date.now()}@example.com`;
     const response = await request.post(`${BASE_URL}/api/auth/register`, {
-      ignoreHTTPSErrors: true,
       data: {
         firstName: 'John',
         lastName: 'Doe',
