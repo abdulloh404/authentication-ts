@@ -4,17 +4,14 @@ import { isEnumVal } from 'jet-validators';
 import { NodeEnvs } from './constants';
 
 dotenv.config();
-
-// eslint-disable-next-line no-console
-console.log('PORT in process.env:', process.env);
-
+// console.log('PORT in process.env:', process.env);
 export default jetEnv({
-  NodeEnv: isEnumVal(NodeEnvs) || 'development',
-  baseUrl: str || 'http://localhost:3000',
-  Host: str || 'localhost',
-  Port: num || 3000,
-  MysqlHost: str || 'localhost',
-  MysqlPort: num || 3306,
-  MysqlUser: str || 'root',
-  MysqlDatabase: str || 'authentication',
+  NodeEnv: isEnumVal(NodeEnvs),
+  baseUrl: str,
+  Host: str,
+  Port: num,
+  MysqlHost: str,
+  MysqlPort: num,
+  MysqlUser: str,
+  MysqlDatabase: str,
 });

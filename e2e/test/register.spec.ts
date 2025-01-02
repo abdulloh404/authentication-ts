@@ -2,6 +2,10 @@ import Env from '../../src/common/Env';
 import { expect, test } from '@playwright/test';
 
 test.describe('Authentication API Tests', () => {
+  test.beforeAll(() => {
+    console.log('Loaded Environment Variables:', Env);
+  });
+
   test('Register User', async ({ request }) => {
     const uniqueEmail = `john.doe+${Date.now()}@example.com`;
     const response = await request.post(`${Env.baseUrl}/api/auth/register`, {
@@ -15,22 +19,28 @@ test.describe('Authentication API Tests', () => {
       },
     });
 
-    expect(response.ok()).toBeTruthy();
+    // console.log(`Response Status: ${response.status()}`);
     const responseBody = await response.json();
+    console.log('Response Body:', responseBody);
+    expect(response.ok()).toBeTruthy();
     expect(responseBody.status).toBe(201);
     expect(responseBody.message).toBe('User registered successfully.');
   });
 
+  // Uncomment and modify the following test as needed
   // test('Login User', async ({ request }) => {
-  //   const response = await request.post(`${BASE_URL}/api/auth/login`, {
+  //   const response = await request.post(`${Env.baseUrl}/api/auth/login`, {
   //     data: {
   //       email: 'john.doe@example.com',
   //       password: 'password123',
   //     },
   //   });
 
-  //   expect(response.ok()).toBeTruthy();
+  //   console.log(`Response Status: ${response.status()}`);
   //   const responseBody = await response.json();
+  //   console.log('Response Body:', responseBody);
+
+  //   expect(response.ok()).toBeTruthy();
   //   expect(responseBody.status).toBe(200);
   //   expect(responseBody.message).toBe('Login successful.');
   // });
