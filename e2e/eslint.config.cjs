@@ -13,7 +13,7 @@ module.exports = [
     .config({
       extends: ['plugin:@nx/typescript'],
     })
-    .map((config) => ({
+    .map(config => ({
       ...config,
       files: ['**/*.ts', '**/*.tsx', '**/*.cts', '**/*.mts'],
       rules: {
@@ -24,7 +24,7 @@ module.exports = [
     .config({
       extends: ['plugin:@nx/javascript'],
     })
-    .map((config) => ({
+    .map(config => ({
       ...config,
       files: ['**/*.js', '**/*.jsx', '**/*.cjs', '**/*.mjs'],
       rules: {

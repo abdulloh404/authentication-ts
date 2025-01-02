@@ -5,7 +5,7 @@ export default defineConfig({
   timeout: 30000,
   retries: 2,
   use: {
-    baseURL: process.env['BASE_URL'],
+    baseURL: process.env['CI'],
     headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
