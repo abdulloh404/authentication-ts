@@ -7,18 +7,20 @@ import path from 'path';
 import server from './server';
 import { sequelize } from '@config/database.config';
 
+console.log(Env);
+
 const SERVER_ENV_MSG = `Loading .env from: ${path.join('config/.env.' + Env.NodeEnv)}`;
-const SERVER_START_MSG = `Express server started on: https://${Env.Host}:${Env.Port}`;
+const SERVER_START_MSG = `Express server started on: ${Env.baseUrl}`;
 const SERVER_START_MY_SQL = `Database connected successfully on port: ${Env.MysqlPort}`;
 
 // SSL options
 const sslOptions = {
   key: fs.readFileSync(
     path.resolve('environments/certificate/localhost.com-key.pem'),
-  ), // private key
+  ),
   cert: fs.readFileSync(
     path.resolve('environments/certificate/localhost.com.pem'),
-  ), // certificate
+  ),
 };
 
 // Start the server

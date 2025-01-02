@@ -7,6 +7,7 @@ console.log('PORT in process.env:', process.env);
 
 export default jetEnv({
   NodeEnv: isEnumVal(NodeEnvs),
+  baseUrl: str,
   Host: str,
   Port: num,
   MysqlHost: str,
