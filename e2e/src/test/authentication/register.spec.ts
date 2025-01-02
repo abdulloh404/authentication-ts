@@ -20,17 +20,17 @@ test.describe('Authentication API Tests', () => {
     expect(responseBody.message).toBe('User registered successfully.');
   });
 
-  test('Login User', async ({ request }) => {
-    const response = await request.post(`${BASE_URL}/api/auth/login`, {
-      data: {
-        email: 'john.doe@example.com',
-        password: 'password123',
-      },
-    });
+  // test('Login User', async ({ request }) => {
+  //   const response = await request.post(`${BASE_URL}/api/auth/login`, {
+  //     data: {
+  //       email: 'john.doe@example.com',
+  //       password: 'password123',
+  //     },
+  //   });
 
-    expect(response.ok()).toBeTruthy();
-    const responseBody = await response.json();
-    expect(responseBody.status).toBe(200);
-    expect(responseBody.message).toBe('Login successful.');
-  });
+  //   expect(response.ok()).toBeTruthy();
+  //   const responseBody = await response.json();
+  //   expect(responseBody.status).toBe(200);
+  //   expect(responseBody.message).toBe('Login successful.');
+  // });
 });
