@@ -1,8 +1,7 @@
 import { test, expect } from '@playwright/test';
 import Env from '@src/common/Env';
 
-const BASE_URL = Env.baseUrl; // แก้ไขตาม URL ของเซิร์ฟเวอร์
-
+const BASE_URL = Env.baseUrl;
 test.describe('Authentication API Tests', () => {
   test('Register User', async ({ request }) => {
     const response = await request.post(`${BASE_URL}/api/auth/register`, {

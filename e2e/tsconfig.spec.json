@@ -1,8 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../dist/out-tsc",
-    "module": "CommonJS",
+    "module": "commonjs",
     "types": ["playwright"]
   },
   "include": ["playwright.config.ts", "src/**/*.ts"]

@@ -64,6 +64,7 @@
     },
     "e2e": {
       "executor": "nx:run-commands",
+      "defaultConfiguration": "test",
       "options": {
         "command": "npx playwright test"
       },

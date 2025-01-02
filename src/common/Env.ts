@@ -6,13 +6,12 @@ import { NodeEnvs } from './constants';
 console.log('PORT in process.env:', process.env);
 
 export default jetEnv({
-  NodeEnv: isEnumVal(NodeEnvs),
+  NodeEnv: isEnumVal(NodeEnvs) || 'development',
   baseUrl: str,
   Host: str,
   Port: num,
   MysqlHost: str,
   MysqlPort: num,
   MysqlUser: str,
-  // MysqlPassword: str,
   MysqlDatabase: str,
 });
