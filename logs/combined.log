@@ -81,3 +81,23 @@
 {"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:19:20 +0000] \"GET / HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
 {"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:19:21 +0000] \"GET / HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
 {"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:20:36 +0000] \"POST /api/auth/register HTTP/1.1\" 201 86 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:25:49 +0000] \"POST /api/auth/register HTTP/1.1\" 409 77 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:26:13 +0000] \"POST /api/auth/register HTTP/1.1\" 409 77 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:27:22 +0000] \"POST /api/auth/register HTTP/1.1\" 409 77 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:28:09 +0000] \"POST /api/auth/register HTTP/1.1\" 409 77 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:28:18 +0000] \"GET / HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:28:19 +0000] \"GET / HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:28:19 +0000] \"GET / HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:28:19 +0000] \"GET / HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:29:07 +0000] \"POST /api/auth/register HTTP/1.1\" 409 77 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:29:30 +0000] \"POST /api/auth/register HTTP/1.1\" 409 77 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:34:29 +0000] \"GET /api/auth/register HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:34:32 +0000] \"GET /api/auth/register HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:34:32 +0000] \"GET /api/auth/register HTTP/1.1\" 404 43 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:35:43 +0000] \"POST /api/auth/register HTTP/1.1\" 409 77 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:36:55 +0000] \"POST /api/auth/register HTTP/1.1\" 409 77 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:37:53 +0000] \"POST /api/auth/register HTTP/1.1\" 409 77 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:39:10 +0000] \"POST /api/auth/register HTTP/1.1\" 409 77 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:39:30 +0000] \"POST /api/auth/register HTTP/1.1\" 409 77 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:40:58 +0000] \"POST /api/auth/register HTTP/1.1\" 201 86 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}
+{"level":"info","message":"127.0.0.1 - - [02/Jan/2025:14:42:30 +0000] \"POST /api/auth/register HTTP/1.1\" 201 86 \"-\" \"Playwright/1.49.1 (arm64; macOS 15.2) node/22.12\""}

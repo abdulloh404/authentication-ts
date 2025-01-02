@@ -4,11 +4,13 @@ import Env from '@src/common/Env';
 const BASE_URL = Env.baseUrl;
 test.describe('Authentication API Tests', () => {
   test('Register User', async ({ request }) => {
+    const uniqueEmail = `john.doe+${Date.now()}@example.com`;
     const response = await request.post(`${BASE_URL}/api/auth/register`, {
+      ignoreHTTPSErrors: true,
       data: {
         firstName: 'John',
         lastName: 'Doe',
-        email: 'john.doe@example.com',
+        email: uniqueEmail,
         password: 'password123',
         confirmPassword: 'password123',
       },
