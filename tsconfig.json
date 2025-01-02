@@ -3,9 +3,9 @@
     "rootDir": ".",
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "ES2022",
-    "module": "ESNext",
-    "lib": ["ES2022", "DOM"],
+    "target": "es2022",
+    "module": "esnext",
+    "lib": ["es2022", "dom"],
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
