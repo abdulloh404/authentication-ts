@@ -10,11 +10,11 @@ console.log('PORT in process.env:', process.env);
 
 export default jetEnv({
   NodeEnv: isEnumVal(NodeEnvs) || 'development',
-  baseUrl: str,
-  Host: str,
-  Port: num,
-  MysqlHost: str,
-  MysqlPort: num,
-  MysqlUser: str,
-  MysqlDatabase: str,
+  baseUrl: str || 'http://localhost:3000',
+  Host: str || 'localhost',
+  Port: num || 3000,
+  MysqlHost: str || 'localhost',
+  MysqlPort: num || 3306,
+  MysqlUser: str || 'root',
+  MysqlDatabase: str || 'authentication',
 });
