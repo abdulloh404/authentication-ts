@@ -1,6 +1,5 @@
 import { defineConfig } from '@playwright/test';
 import dotenv from 'dotenv';
-import Env from '@src/common/Env';
 
 dotenv.config();
 
@@ -9,9 +8,8 @@ export default defineConfig({
   timeout: 30000,
   retries: 2,
   use: {
-    baseURL: Env.baseUrl,
+    baseURL: process.env['BASE_URL'],
     headless: true,
-    ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
   },

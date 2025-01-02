@@ -58,8 +58,7 @@
     },
     "test": {
       "options": {
-        "passWithNoTests": true,
-        "parallel": true
+        "passWithNoTests": true
       }
     },
     "e2e": {
