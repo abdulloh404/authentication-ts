@@ -58,7 +58,8 @@
     },
     "test": {
       "options": {
-        "passWithNoTests": true
+        "passWithNoTests": false,
+        "parallel": true
       }
     },
     "docker-build": {
