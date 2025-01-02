@@ -1,4 +1,3 @@
 #!/bin/sh
-# npx lint-staged
-
-npx prettier --write .
+npx lint-staged
+# npx prettier --write .
