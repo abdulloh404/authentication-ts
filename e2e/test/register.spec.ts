@@ -1,4 +1,4 @@
-import Env from '@src/common/Env';
+import Env from '../../src/common/Env';
 import { expect, test } from '@playwright/test';
 
 test.describe('Authentication API Tests', () => {
