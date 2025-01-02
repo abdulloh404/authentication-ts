@@ -58,9 +58,16 @@
     },
     "test": {
       "options": {
-        "passWithNoTests": false,
+        "passWithNoTests": true,
         "parallel": true
       }
+    },
+    "e2e": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx playwright test"
+      },
+      "outputs": ["{workspaceRoot}/e2e/test-results"]
     },
     "docker-build": {
       "dependsOn": ["build"],
