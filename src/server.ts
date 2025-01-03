@@ -30,7 +30,12 @@ if (Env.NodeEnv === NodeEnvs.Production.valueOf()) {
   app.use(helmet());
 }
 
-// Routes
+// Base Route
+app.get('/', (_req: Request, res: Response) => {
+  res.send('Welcome to the Base Route!');
+});
+
+// Mount Routes
 app.use(Paths.Base, BaseRouter);
 app.use(apiRouter);
 
