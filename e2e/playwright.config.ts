@@ -20,7 +20,6 @@ export default defineConfig({
   use: {
     baseURL: baseURL,
     headless: true,
-    ignoreHTTPSErrors: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
     clientCertificates: [
