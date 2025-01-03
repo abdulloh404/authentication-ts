@@ -31,7 +31,8 @@ export default defineConfig({
     ],
   },
   webServer: {
-    command: 'npx nx run authentication-api:serve',
+    command:
+      'npx dotenv -e ./config/.env.e2e -- npx nx run authentication-api:serve',
     url: 'https://localhost:3000',
     reuseExistingServer: !process.env['CI'],
     cwd: workspaceRoot,
