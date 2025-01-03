@@ -13,12 +13,8 @@ const SERVER_START_MY_SQL = `Database connected successfully on port: ${Env.Mysq
 
 // SSL options
 const sslOptions = {
-  key: fs.readFileSync(
-    path.resolve('environments/certificate/localhost.com-key.pem'),
-  ),
-  cert: fs.readFileSync(
-    path.resolve('environments/certificate/localhost.com.pem'),
-  ),
+  key: fs.readFileSync(path.resolve('environments/certificate/localhost.key')),
+  cert: fs.readFileSync(path.resolve('environments/certificate/localhost.crt')),
 };
 
 console.log(Env);

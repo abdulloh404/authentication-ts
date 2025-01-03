@@ -25,15 +25,15 @@ export default defineConfig({
     video: 'retain-on-failure',
     clientCertificates: [
       {
-        origin: 'https://localhost.com:3000',
-        certPath: './../environments/certificate/localhost.com.crt',
-        keyPath: './../environments/certificate/localhost.com-key.pem',
+        origin: 'https://localhost:3000',
+        certPath: './../environments/certificate/localhost.crt',
+        keyPath: './../environments/certificate/localhost.key',
       },
     ],
   },
   webServer: {
     command: 'npx nx run authentication-api:serve',
-    url: 'https://localhost.com:3000',
+    url: 'https://localhost:3000',
     reuseExistingServer: !process.env['CI'],
     cwd: workspaceRoot,
   },
