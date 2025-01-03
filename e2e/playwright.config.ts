@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { defineConfig } from '@playwright/test';
-import { workspaceRoot } from '@nx/devkit';
+// import { workspaceRoot } from '@nx/devkit';
 
 /**
  * Read environment variables from file.
