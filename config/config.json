@@ -13,6 +13,13 @@
     "host": "localhost",
     "dialect": "mysql"
   },
+  "e2e": {
+    "username": "root",
+    "password": "",
+    "database": "authentication",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
   "production": {
     "username": "root",
     "password": "",
