@@ -1,15 +1,14 @@
+import Env from '../../src/common/Env';
 import { expect, test } from '@playwright/test';
 
 test.describe('Authentication API Tests', () => {
   test.beforeAll(() => {
-    console.log('Loaded Environment Variables:', process.env);
+    console.log('Loaded Environment Variables:', Env);
   });
-
-  const baseURL = process.env['BASE_URL'] + ':' + process.env['PORT'];
 
   test('Register User', async ({ request }) => {
     const uniqueEmail = `john.doe+${Date.now()}@example.com`;
-    const response = await request.post(`${baseURL}/api/auth/register`, {
+    const response = await request.post(`/api/auth/register`, {
       ignoreHTTPSErrors: true,
       data: {
         firstName: 'John',

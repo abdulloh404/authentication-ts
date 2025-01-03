@@ -11,7 +11,7 @@ dotenv.config();
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
-const baseURL = process.env['BASE_URL'];
+const baseURL = process.env['BASE_URL'] + ':' + process.env['PORT'];
 
 export default defineConfig({
   testDir: './src',
@@ -30,12 +30,12 @@ export default defineConfig({
       },
     ],
   },
-  webServer: {
-    command:
-      'npx dotenv -e ./config/.env.e2e -- npx nx run authentication-api:serve',
-    url: 'https://localhost:3000',
-    reuseExistingServer: !process.env['CI'],
-    cwd: workspaceRoot,
-  },
+  // webServer: {
+  //   command:
+  //     'npx dotenv -e ./config/.env.e2e -- npx nx run authentication-api:serve',
+  //   url: 'https://localhost:3000',
+  //   reuseExistingServer: !process.env['CI'],
+  //   cwd: workspaceRoot,
+  // },
   reporter: [['list'], ['html', { outputFolder: 'test-results' }]],
 });
