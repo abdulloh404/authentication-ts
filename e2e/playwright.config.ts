@@ -32,7 +32,7 @@ export default defineConfig({
     ],
   },
   webServer: {
-    command: 'npx nx run serve',
+    command: 'npx nx run authentication-api:serve',
     url: 'https://localhost.com:3000',
     reuseExistingServer: !process.env['CI'],
     cwd: workspaceRoot,
