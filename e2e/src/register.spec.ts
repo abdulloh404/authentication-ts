@@ -6,9 +6,11 @@ test.describe('Authentication API Tests', () => {
     console.log('Loaded Environment Variables:', Env);
   });
 
+  const baseURL = process.env['BASE_URL'] + ':' + process.env['PORT'];
+
   test('Register User', async ({ request }) => {
     const uniqueEmail = `john.doe+${Date.now()}@example.com`;
-    const response = await request.post(`${Env.baseUrl}/api/auth/register`, {
+    const response = await request.post(`${baseURL}/api/auth/register`, {
       ignoreHTTPSErrors: true,
       data: {
         firstName: 'John',
