@@ -10,6 +10,7 @@ dotenv.config();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
+ * Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
  */
 const baseURL = process.env['BASE_URL'] + ':' + process.env['PORT'];
 
