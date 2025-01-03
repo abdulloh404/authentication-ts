@@ -6,25 +6,29 @@ test.describe('Authentication API Tests', () => {
     console.log('Loaded Environment Variables:', Env);
   });
 
-  test('Register User', async ({ request }) => {
-    const uniqueEmail = `john.doe+${Date.now()}@example.com`;
-    const response = await request.post(`/api/auth/register`, {
-      ignoreHTTPSErrors: true,
-      data: {
-        firstName: 'John',
-        lastName: 'Doe',
-        email: uniqueEmail,
-        password: 'password123',
-        confirmPassword: 'password123',
-      },
-    });
+  const baseURL = process.env['BASE_URL'] + ':' + process.env['PORT'];
 
-    // console.log(`Response Status: ${response.status()}`);
-    const responseBody = await response.json();
-    console.log('Response Body:', responseBody);
-    expect(response.ok()).toBeTruthy();
-    expect(responseBody.status).toBe(201);
-    expect(responseBody.message).toBe('User registered successfully.');
+  test.describe('Authentication API Tests', () => {
+    test('Register User', async ({ request }) => {
+      const uniqueEmail = `john.doe+${Date.now()}@example.com`;
+
+      const response = await request.post(baseURL + '/api/auth/register', {
+        ignoreHTTPSErrors: true,
+        data: {
+          firstName: 'John',
+          lastName: 'Doe',
+          email: uniqueEmail,
+          password: 'password123',
+          confirmPassword: 'password123',
+        },
+      });
+
+      // ตรวจสอบสถานะและข้อความตอบกลับ
+      expect(response.ok()).toBeTruthy();
+      const responseBody = await response.json();
+      expect(responseBody.status).toBe(201);
+      expect(responseBody.message).toBe('User registered successfully.');
+    });
   });
 
   // Uncomment and modify the following test as needed
