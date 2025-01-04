@@ -8,8 +8,8 @@ import server from './server';
 import { sequelize } from '@config/database.config';
 
 const SERVER_ENV_MSG = `Loading .env from: ${path.join('config/.env.' + Env.NodeEnv)}`;
-const SERVER_START_MSG = `Express server started on: ${Env.baseUrl}`;
 const SERVER_START_MY_SQL = `Database connected successfully on port: ${Env.MysqlPort}`;
+const SERVER_START_MSG = `Express server started on: ${Env.baseUrl}:${Env.Port}`;
 
 // SSL options
 const sslOptions = {
