@@ -5,8 +5,6 @@ export default [
   ...configs['flat/base'],
   ...configs['flat/typescript'],
   ...configs['flat/javascript'],
-  ...configs['strictTypeChecked'],
-  ...configs['stylisticTypeChecked'],
   {
     ignores: [
       'tmp/**/*',
@@ -23,12 +21,12 @@ export default [
      * Shared settings for all the projects below. See https://typescript-eslint.io/rules
      */
     rules: {
-      // '@typescript-eslint/no-duplicate-enum-values': 'error',
+      '@typescript-eslint/no-duplicate-enum-values': 'error',
       // '@typescript-eslint/no-duplicate-type-constituents': 'error',
-      // '@typescript-eslint/no-explicit-any': 'warn',
-      // '@typescript-eslint/no-extra-non-null-assertion': 'warn',
-      // '@typescript-eslint/explicit-member-accessibility': 'warn',
-      // '@typescript-eslint/no-unused-expressions': 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
+      '@typescript-eslint/no-extra-non-null-assertion': 'warn',
+      '@typescript-eslint/explicit-member-accessibility': 'warn',
+      '@typescript-eslint/no-unused-expressions': 'warn',
       'no-loop-func': 'off',
       '@typescript-eslint/no-loop-func': 'error',
       '@typescript-eslint/no-require-imports': 'error',
@@ -36,7 +34,7 @@ export default [
       'no-restricted-imports': 'off',
       '@typescript-eslint/no-restricted-imports': 'error',
       'no-unused-vars': 'off',
-      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-unused-vars': 'warn',
       '@typescript-eslint/no-misused-promises': 0,
       '@typescript-eslint/no-confusing-void-expression': 0,
       '@typescript-eslint/no-unnecessary-condition': 0,
