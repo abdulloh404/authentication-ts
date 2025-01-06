@@ -5,8 +5,8 @@ export default [
   ...configs['flat/base'],
   ...configs['flat/typescript'],
   ...configs['flat/javascript'],
-  // tseslint.configs.strictTypeChecked,
-  // tseslint.configs.stylisticTypeChecked,
+  ...configs['strictTypeChecked'],
+  ...configs['stylisticTypeChecked'],
   {
     ignores: [
       'tmp/**/*',
