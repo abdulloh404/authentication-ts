@@ -33,6 +33,7 @@ jobs:
       - run: npx nx affected --target=lint --parallel
       - run: npx nx affected --target=test --parallel
       - run: npx nx affected --target=build --parallel
+      - run: npx nx affected --target=e2e --parallel
 
       - name: Upload Test Results
         uses: actions/upload-artifact@v3
