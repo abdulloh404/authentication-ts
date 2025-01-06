@@ -12,14 +12,14 @@ dotenv.config();
  * See https://playwright.dev/docs/test-configuration.
  * Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
  */
-const baseURL = process.env['BASE_URL'] + ':' + process.env['PORT'];
+// const baseURL = process.env['BASE_URL'] + ':' + process.env['PORT'];
 
 export default defineConfig({
   testDir: './src',
   timeout: 30000,
   retries: 2,
   use: {
-    baseURL: baseURL,
+    baseURL: 'https://localhost:3000',
     headless: true,
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
